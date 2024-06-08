@@ -229,5 +229,132 @@
                 "type": "dict[string, any]"
             }
         ]
+    },
+    {
+        "name": "get_news_by_topic",
+        "description": "Retrieves the latest news articles on a given topic",
+        "parameters": [
+            {
+                "name": "topic",
+                "type": "string"
+            }
+        ],
+        "required": [ "topic" ],
+        "returns": [
+            {
+                "name": "news",
+                "type": "list[dict[string, any]]"
+            }
+        ]
+    },
+    {
+        "name": "get_stock_price",
+        "description": "Retrieves the current price of a stock in terms of USD",
+        "parameters": [
+            {
+                "name": "stock",
+                "type": "string"
+            }
+        ],
+        "required": [ "stock" ],
+        "returns": [
+            {
+                "name": "price",
+                "type": "float"
+            }
+        ]
+    },
+    {
+        "name": "web_search",
+        "description": "Performs a web search on a given query",
+        "parameters": [
+            {
+                "name": "query",
+                "type": "string"
+            },
+            {
+                "name": "count",
+                "type": "int"
+            }
+        ],
+        "required": [ "query" ],
+        "returns": [
+            {
+                "name": "results",
+                "type": "list[dict[string, any]]"
+            }
+        ]
+    },
+    {
+        "name": "generate_image",
+        "description": "Generates an image based on a given text, using a text-to-image model",
+        "parameters": [
+            {
+                "name": "text",
+                "type": "string"
+            }
+        ],
+        "required": [ "text" ],
+        "returns": [
+            {
+                "name": "image_url",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "name": "perform_ocr",
+        "description": "Performs Optical Character Recognition (OCR) on an image to extract text",
+        "parameters": [
+            {
+                "name": "image_url",
+                "type": "string"
+            }
+        ],
+        "required": [ "image_url" ],
+        "returns": [
+            {
+                "name": "text",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "name": "generate_markdown",
+        "description": "Generates a markdown document based on a given title and content",
+        "parameters": [
+            {
+                "name": "title",
+                "type": "string"
+            },
+            {
+                "name": "content",
+                "type": "string"
+            }
+        ],
+        "required": [ "title", "content" ],
+        "returns": [
+            {
+                "name": "markdown",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "name": "generate_pdf",
+        "description": "Generates a PDF document based on a given markdown content",
+        "parameters": [
+            {
+                "name": "markdown",
+                "type": "string"
+            }
+        ],
+        "required": [ "markdown" ],
+        "returns": [
+            {
+                "name": "pdf_url",
+                "type": "string"
+            }
+        ]
     }
 ] 
