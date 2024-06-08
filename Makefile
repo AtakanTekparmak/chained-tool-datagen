@@ -28,14 +28,14 @@ install:
 	$(PIP) install -r requirements.txt 
 
 # Clone the data-genie repository
-data_genie_setup:
+data_genie_setup: install
 	@git clone $(DATA_GENIE_REPO_URL) $(DATA_GENIE_REPO_DIR)
 	@cd $(DATA_GENIE_REPO_DIR) && \
 		. ../$(VENV_NAME)/bin/activate && \
 		$(PIP) install -r requirements.txt
 
 # Run the main.py script
-run:
+run: 
 	. $(VENV_NAME)/bin/activate && \
 	$(PYTHON) main.py
 

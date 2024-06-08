@@ -1,6 +1,9 @@
-# # Python stuff
+# Python stuff
 *.pyc
 __pycache__/
 
 # Virtualenv
 venv/
+
+# The actual .env file
+.env

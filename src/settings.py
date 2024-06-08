@@ -1,0 +1,1 @@
+MODEL_NAME = "mixtral-8x7b-32768"
