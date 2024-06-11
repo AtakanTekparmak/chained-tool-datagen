@@ -1,5 +1,8 @@
 import os
+
 from groq import Groq
+
+from src.utils import load_chained_fnc_prompt
 
 class GroqModel:
     """A class to interact with the Groq API and chat with the model"""
@@ -10,7 +13,10 @@ class GroqModel:
     def chat(self, user_message: str):
         """Chat with the model and return the response"""
         # Create a message object for the user input
-        messages = [{"role": "user", "content": user_message}]
+        messages = [
+            {"role": "system", "content": load_chained_fnc_prompt()},
+            {"role": "user", "content": "<user_query>\n" + user_message + "\n</user_query>\n"}
+        ]
 
         # Get the chat completion from the model
         return self._get_chat_completion(messages)

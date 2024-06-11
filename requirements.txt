@@ -3,3 +3,6 @@ groq
 
 # Python dotenv
 python-dotenv
+
+# Pydantic
+pydantic

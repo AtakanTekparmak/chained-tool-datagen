@@ -7,3 +7,6 @@ venv/
 
 # The actual .env file
 .env
+
+# Log files
+logs/
