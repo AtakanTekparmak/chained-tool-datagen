@@ -6,7 +6,7 @@ from src.utils import load_chained_fnc_prompt
 
 class GroqModel:
     """A class to interact with the Groq API and chat with the model"""
-    def __init__(self, model_name: str):
+    def __init__(self, model_name: str = os.environ.get("GROQ_MODEL")):
         self.client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
         self.model_name = model_name
 

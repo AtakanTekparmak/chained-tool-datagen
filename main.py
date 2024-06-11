@@ -9,8 +9,7 @@ def main():
     load_dotenv()
     
     # Create a GroqModel instance
-    model_name = os.environ.get("GROQ_BASE_MODEL")
-    model = GroqModel(model_name=model_name)
+    model = GroqModel()
 
     # Chat with the model
     user_query = "Can you send my friend (jasper3131@gmail.com) an email about the current sentiment about MMA in twitter and the stats for Sean Strickland please?"
