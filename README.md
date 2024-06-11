@@ -1,6 +1,6 @@
 # chained-tool-datagen
 
-## Installation 
+## Installation and Setup
 
 1. Pull [data-genie-agents](https://github.com/interstellarninja/data-genie-agents):
 ```bash
@@ -14,7 +14,9 @@ make install
 
 3. Add your `GROQ_API_KEY` to the `.env` file.
 
-4. Run the pipeline:
+## Usage
+
+To run the pipeline:
 ```bash
 make run
 ```
