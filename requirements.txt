@@ -6,3 +6,6 @@ python-dotenv
 
 # Pydantic
 pydantic
+
+# EasyFNC
+easy-fnc==0.1.7
