@@ -16,7 +16,7 @@ def main():
     # Chat with the model
     user_query = "Can you get me a random city and the weather forecast for it?"
     raw_response = model.chat(user_query)
-    print(raw_response)
+    #print(raw_response)
 
     # Create a ModelResponse object from the response
     model_response = ModelResponse.from_raw_response(raw_response=raw_response)
