@@ -1,5 +1,4 @@
 from dotenv import load_dotenv
-import os
 
 from src.models.groq import GroqModel
 from src.schemas import ModelResponse

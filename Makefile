@@ -49,7 +49,7 @@ run:
 # Run the data-genie-agents/datagen.py
 run_datagen:
 	. $(VENV_NAME)/bin/activate && \
-	$(PYTHON) $(DATA_GENIE_AGENTS_REPO_DIR)/datagen.py --generation_type function_calling --num_tasks 1 --agent_config groq.json
+	$(PYTHON) $(DATA_GENIE_AGENTS_REPO_DIR)/datagen.py --generation_type function_calling --num_tasks 2 --agent_config groq.json --local_embeddings True
 
 # Clean the virtual environment
 clean:
