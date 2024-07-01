@@ -8,4 +8,4 @@ python-dotenv
 pydantic
 
 # EasyFNC
-easy-fnc==0.1.8
+easy-fnc

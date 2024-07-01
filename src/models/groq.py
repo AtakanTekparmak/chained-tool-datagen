@@ -2,25 +2,21 @@ import os
 
 from groq import Groq
 
-from src.utils import load_chained_fnc_prompt
+from src.models.model import Model
 
-class GroqModel:
+class GroqModel(Model):
     """A class to interact with the Groq API and chat with the model"""
-    def __init__(self, model_name: str = os.environ.get("GROQ_MODEL")):
+    def __init__(self, config):
+        super().__init__(config)
         self.client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
-        self.model_name = model_name
+        self.model_name = config.name
 
-    def chat(self, user_message: str):
-        """Chat with the model and return the response"""
-        # Create a message object for the user input
-        messages = [
-            {"role": "system", "content": load_chained_fnc_prompt()},
-            {"role": "user", "content": "<user_query>\n" + user_message + "\n</user_query>\n"}
-        ]
-
-        # Get the chat completion from the model
-        return self._get_chat_completion(messages)
-
-    def _get_chat_completion(self, messages):
+    def format_user_input(self, user_input: str) -> str:
+        """Format the user input"""
+        return "<user_query>\n" + user_input + "\n</user_query>\n"
+    
+    def _get_chat_completion(self, messages) -> str:
         """Get the chat completion from the model"""
-        return self.client.chat.completions.create(messages=messages, model=self.model_name).choices[0].message.content
+        # Get the messages as a list of dictionaries
+        messages_list = [message.model_dump() for message in messages.messages]
+        return self.client.chat.completions.create(messages=messages_list, model=self.model_name).choices[0].message.content

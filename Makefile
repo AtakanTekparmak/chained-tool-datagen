@@ -32,7 +32,7 @@ data_genie_setup:
 
 # Copy the .env.example file to .env only if it doesn't exist
 copy_env:
-	if [ ! -f $(FILE) ]; then cp .env.example $(FILE); fi
+	if [ ! -f $(ENV_FILE) ]; then cp .env.example $(ENV_FILE); fi
 
 # Install dependencies and set up the environment
 install: copy_env
@@ -49,7 +49,7 @@ run:
 # Run the data-genie-agents/datagen.py
 run_datagen:
 	. $(VENV_NAME)/bin/activate && \
-	$(PYTHON) $(DATA_GENIE_AGENTS_REPO_DIR)/datagen.py --generation_type function_calling --num_tasks 2 --agent_config groq.json --local_embeddings True
+	$(PYTHON) $(DATA_GENIE_AGENTS_REPO_DIR)/datagen.py --generation_type function_calling --num_tasks 2 --agent_config chained_groq.json --local_embeddings True
 
 # Clean the virtual environment
 clean:

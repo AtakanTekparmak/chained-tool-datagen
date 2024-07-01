@@ -2,7 +2,7 @@ import tomllib
 import re
 
 # Declare constants
-CHAINED_FNC_PROMPT_PATH = "static/chained_fnc_prompt.toml"
+CHAINED_FNC_PROMPT_PATH = "static/chained_fnc_call.toml"
 
 
 def load_toml(file_path: str) -> dict[str, any]:

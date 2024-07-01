@@ -66,4 +66,5 @@ The user wants X, to do that, I should call the following functions:
 <|end_thoughts|>
 
 Provide nothing else than the information in the <|function_calls|> & <|end_function_calls|>, <|answer|> & <|end_answer|> and <|thoughts|> & <|end_thoughts|> blocks.
+The user query will be provided in between <user_query> and </user_query> tags, then you will provide your response in the aforementioned blocks.
 """
