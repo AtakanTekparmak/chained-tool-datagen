@@ -9,3 +9,6 @@ pydantic
 
 # EasyFNC
 easy-fnc
+
+# jinja2
+Jinja2

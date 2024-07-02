@@ -3,18 +3,24 @@ from dotenv import load_dotenv
 from src.models.groq import GroqModel
 from src.schemas import ChainedFNCResponse
 from src.models.config import ModelConfig
-from src.utils import load_chained_fnc_prompt
+from src.utils import load_fnc_template
 
-from easy_fnc.function_caller import FunctionCallingEngine
+from easy_fnc.function_caller import FunctionCallingEngine, create_functions_metadata
+from easy_fnc.functions import get_user_defined_functions
 
 def main():
     # Load the .env file
     load_dotenv()
+
+    # Load the function call template
+    fnc_template = load_fnc_template(
+        fnc_metadata=create_functions_metadata(get_user_defined_functions("static/sample_functions.py"))
+    )
     
     # Create a ModelConfig instance
     model_config = ModelConfig(
         name="llama3-70b-8192",
-        system_prompt=load_chained_fnc_prompt(),
+        system_prompt=fnc_template,
         temperature=0.5,
         fewshot_examples=None
     )

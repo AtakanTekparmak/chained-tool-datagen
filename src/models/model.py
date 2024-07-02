@@ -43,7 +43,6 @@ class Model(ABC):
         else:
             self.messages.add_user_message(user_message)
         
-
         # Get the chat completion from the model
         assistant_response = self._get_chat_completion(self.messages)
         self.messages.add_assistant_message(assistant_response)
