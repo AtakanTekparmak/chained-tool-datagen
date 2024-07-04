@@ -6,7 +6,6 @@ from src.models.config import ModelConfig
 from src.utils import load_fnc_template
 
 from easy_fnc.function_caller import FunctionCallingEngine, create_functions_metadata
-from easy_fnc.functions import get_user_defined_functions
 
 def main():
     # Load the .env file
@@ -14,7 +13,7 @@ def main():
 
     # Load the function call template
     fnc_template = load_fnc_template(
-        fnc_metadata=create_functions_metadata(get_user_defined_functions("static/sample_functions.py"))
+        fnc_metadata=create_functions_metadata(file_path="static/sample_functions.py")
     )
     
     # Create a ModelConfig instance
