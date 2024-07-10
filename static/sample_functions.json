@@ -356,5 +356,254 @@
                 "type": "string"
             }
         ]
+    },
+    {
+        "name": "create_file",
+        "description": "Creates a new file in the file system",
+        "parameters": [
+            {
+                "name": "filename",
+                "type": "string"
+            },
+            {
+                "name": "content",
+                "type": "string"
+            },
+            {
+                "name": "filepath",
+                "type": "string"
+            }
+        ],
+        "required": [ "filename", "filepath" ],
+        "returns": [
+            {
+                "name": "file_path",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "name": "read_file",
+        "description": "Reads the contents of an existing file",
+        "parameters": [
+            {
+                "name": "file_path",
+                "type": "string"
+            }
+        ],
+        "required": [ "file_path" ],
+        "returns": [
+            {
+                "name": "file_content",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "name": "delete_file",
+        "description": "Deletes an existing file",
+        "parameters": [
+            {
+                "name": "file_path",
+                "type": "string"
+            }
+        ],
+        "required": [ "file_path" ],
+        "returns": [
+            {
+                "name": "success",
+                "type": "boolean"
+            }
+        ]
+    },
+    {
+        "name": "copy_file",
+        "description": "Copies an existing file to a new location",
+        "parameters": [
+            {
+                "name": "source_file_path",
+                "type": "string"
+            },
+            {
+                "name": "destination_path",
+                "type": "string"
+            }
+        ],
+        "required": [ "source_file_path", "destination_path" ],
+        "returns": [
+            {
+                "name": "success",
+                "type": "boolean"
+            }
+        ]
+    },
+    {
+        "name": "move_file",
+        "description": "Moves an existing file to a new location",
+        "parameters": [
+            {
+                "name": "source_file_path",
+                "type": "string"
+            },
+            {
+                "name": "new_path",
+                "type": "string"
+            }
+        ],
+        "required": [ "source_file_path", "new_path" ],
+        "returns": [
+            {
+                "name": "success",
+                "type": "boolean"
+            }
+        ]
+    },
+    {
+        "name": "rename_file",
+        "description": "Renames an existing file",
+        "parameters": [
+            {
+                "name": "file_path",
+                "type": "string"
+            },
+            {
+                "name": "new_name",
+                "type": "string"
+            }
+        ],
+        "required": [ "file_path", "new_name" ],
+        "returns": [
+            {
+                "name": "success",
+                "type": "boolean"
+            }
+        ]
+    },
+    {
+        "name": "create_folder",
+        "description": "Creates a new folder in the file system",
+        "parameters": [
+            {
+                "name": "folder_name",
+                "type": "string"
+            },
+            {
+                "name": "parent_folder_path",
+                "type": "string"
+            }
+        ],
+        "required": [ "folder_name", "parent_folder_path" ],
+        "returns": [
+            {
+                "name": "folder_path",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "name": "read_pdf",
+        "description": "Reads the contents of a PDF file",
+        "parameters": [
+            {
+                "name": "pdf_file_path",
+                "type": "string"
+            }
+        ],
+        "required": [ "pdf_file_path" ],
+        "returns": [
+            {
+                "name": "pdf_content",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "name": "read_word_file",
+        "description": "Reads the contents of a Word file",
+        "parameters": [
+            {
+                "name": "word_file_path",
+                "type": "string"
+            }
+        ],
+        "required": [ "word_file_path" ],
+        "returns": [
+            {
+                "name": "word_content",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "name": "create_note",
+        "description": "Creates a new note",
+        "parameters": [
+            {
+                "name": "note_content",
+                "type": "string"
+            }
+        ],
+        "required": [ "noteContent" ],
+        "returns": [
+            {
+                "name": "note_name",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "name": "edit_note",
+        "description": "Edits the contents of an existing note",
+        "parameters": [
+            {
+                "name": "note_name",
+                "type": "string"
+            },
+            {
+                "name": "new_content",
+                "type": "string"
+            }
+        ],
+        "required": [ "note_name", "new_content" ],
+        "returns": [
+            {
+                "name": "success",
+                "type": "boolean"
+            }
+        ]
+    },
+    {
+        "name": "read_note",
+        "description": "Reads the contents of an existing note",
+        "parameters": [
+            {
+                "name": "note_name",
+                "type": "string"
+            }
+        ],
+        "required": [ "note_name" ],
+        "returns": [
+            {
+                "name": "note_content",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "name": "delete_note",
+        "description": "Deletes an existing note",
+        "parameters": [
+            {
+                "name": "note_name",
+                "type": "string"
+            }
+        ],
+        "required": [ "note_name" ],
+        "returns": [
+            {
+                "name": "success",
+                "type": "boolean"
+            }
+        ]
     }
 ] 
