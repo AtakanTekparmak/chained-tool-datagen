@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 
 from src.models.groq import GroqModel
-from src.schemas import ChainedFNCResponse
+from src.schemas import ChainedFNCResponse, FunctionsMetadata
 from src.models.config import ModelConfig
 from src.utils import load_fnc_template
 
@@ -12,8 +12,9 @@ def main():
     load_dotenv()
 
     # Load the function call template
+    fnc_metadata = create_functions_metadata(file_path="static/sample_functions.py")
     fnc_template = load_fnc_template(
-        fnc_metadata=create_functions_metadata(file_path="static/sample_functions.py")
+        fnc_metadata=FunctionsMetadata.from_list(fnc_metadata)
     )
     
     # Create a ModelConfig instance

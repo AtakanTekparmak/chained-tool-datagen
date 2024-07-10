@@ -3,7 +3,7 @@ from os.path import join
 
 from jinja2 import Environment, FileSystemLoader
 
-from src.schemas import FunctionMetadata
+from src.schemas import FunctionsMetadata
 
 # Declare constants
 STATIC_DIR = "static"
@@ -23,13 +23,13 @@ def load_toml(file_path: str) -> dict[str, any]:
     
 def load_fnc_template(
         template_name: str = FNC_TEMPLATE_PATH,
-        fnc_metadata: FunctionMetadata = None
+        fnc_metadata: FunctionsMetadata = None
     ) -> str:
     """Load the function template from the Jinja2 template file"""
     template = env.get_template(template_name)
     
     if fnc_metadata is not None:
-        return template.render(functions_metadata=fnc_metadata)
+        return template.render(functions_metadata=fnc_metadata.model_dump_json(indent=2))
     else:
         print("No function metadata provided. Rendering an empty template.")
         return template.render(functions_metadata=[])

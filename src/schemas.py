@@ -9,6 +9,17 @@ from easy_fnc.schemas import (
 )
 from easy_fnc.schemas import ModelResponse as ChainedFNCResponse
 
+class FunctionsMetadata(BaseModel):
+    """
+    Pydantic model for functions metadata
+    """
+    functions_metadata: list[FunctionMetadata]
+
+    @classmethod
+    def from_list(cls, functions_metadata: list[FunctionMetadata]) -> 'FunctionsMetadata':
+        """Create a FunctionsMetadata object from a list of FunctionMetadata objects"""
+        return cls(functions_metadata=functions_metadata)
+
 class UserMessage(BaseModel):
     """
     Pydantic model for user message
