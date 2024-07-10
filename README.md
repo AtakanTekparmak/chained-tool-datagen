@@ -5,16 +5,17 @@ The general idea of the pipeline is this (currently in development):
 graph TD
     A[Curriculum<br>Category, Strategy, Task] -->|Function Schema Generating LLM| B[Generated Function Schemas]
     B -->|Dummy Function Generating LLM| C[Python Functions<br>with Static Values]
-    B -->|User Query Generating LLM| D[Initial User Query]
+    B -->|User Query Generating LLM| D[User Query]
     D & B --> E[Function Calling LLM]
     E --> F[Thoughts + Function Calls]
     F & C --> G[Function Execution Engine]
     G --> H[Tool Results]
-    H & B & D --> I[Response Generation LLM]
-    I --> J[Assistant Reply]
-    J -->|Validation LLM| K{Valid?}
-    K -->|No| L[Discard]
-    K -->|Yes| M{Conversation<br>Complete?}
+    H -->|Validation LLM| I{Valid?}
+    I -->|No| J[Discard]
+    I -->|Yes| K[Response Generation LLM]
+    B & D --> K
+    K --> L[Assistant Reply]
+    L --> M{Conversation<br>Complete?}
     M -->|No| N[Follow-up Query Generator LLM]
     N --> D
     M -->|Yes| O[Final Formatting LLM]
@@ -26,7 +27,8 @@ graph TD
         G
         H
         I
-end
+        K
+    end
 ```
 
 ## Installation and Setup
