@@ -9,7 +9,7 @@ class GroqModel(Model):
     def __init__(self, config):
         super().__init__(config)
         self.client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
-        self.model_name = config.name
+        self.model_name = os.environ.get("GROQ_MODEL")
 
     def format_user_input(self, user_input: str) -> str:
         """Format the user input"""

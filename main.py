@@ -20,7 +20,6 @@ def main():
     # Create a ModelConfig instance
     model_config = ModelConfig(
         client="groq",
-        name="llama3-70b-8192",
         system_prompt=fnc_template,
         temperature=0.5,
         fewshot_examples=None
