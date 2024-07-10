@@ -7,6 +7,7 @@ class ModelConfig(BaseModel):
     """
     Pydantic model for model configuration
     """
+    client: str
     name: str
     system_prompt: Optional[str]
     temperature: float

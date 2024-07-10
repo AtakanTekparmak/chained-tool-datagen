@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 
-from src.models.groq import GroqModel
+from src.models import construct_model      
 from src.schemas import ChainedFNCResponse, FunctionsMetadata
 from src.models.config import ModelConfig
 from src.utils import load_fnc_template
@@ -19,13 +19,14 @@ def main():
     
     # Create a ModelConfig instance
     model_config = ModelConfig(
+        client="groq",
         name="llama3-70b-8192",
         system_prompt=fnc_template,
         temperature=0.5,
         fewshot_examples=None
     )
     # Create a GroqModel instance
-    model = GroqModel(config=model_config)
+    model = construct_model(config=model_config)
 
     # Chat with the model
     user_query = "Can you get me a random city and the weather forecast for it?"
