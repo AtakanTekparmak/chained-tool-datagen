@@ -7,7 +7,7 @@ from src.utils import load_fnc_template
 
 from easy_fnc.function_caller import FunctionCallingEngine, create_functions_metadata
 
-def main():
+def function_calling_flow():
     # Load the .env file
     load_dotenv()
 
@@ -44,5 +44,18 @@ def main():
     outputs = fnc_engine.call_functions(model_response.function_calls)
     print(outputs)
 
+def function_generating_flow():
+    from src.components.function_schema_generator import FunctionSchemaGenerator
+    model_config = ModelConfig(
+        client="groq",
+        system_prompt="You are a helpful assistant that generates function schemas.",
+        temperature=0.7,
+        fewshot_examples=None
+    )
+    generator = FunctionSchemaGenerator(model_config)
+    schemas = generator.generate_schema("File System", "File Manipulation", "Create a new File")
+    print(schemas)
+
 if __name__ == "__main__":
-    main()
+    #function_calling_flow()
+    function_generating_flow()
