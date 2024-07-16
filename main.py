@@ -53,8 +53,15 @@ def function_generating_flow():
         fewshot_examples=None
     )
     generator = FunctionSchemaGenerator(model_config)
-    schemas = generator.generate_schema("File System", "File Manipulation", "Create a new File")
-    print(schemas)
+
+    # Generate schemas for a single task
+    #schemas = generator.generate_schemas("File System", "File Manipulation", "Create a new File")
+    #print(schemas)
+
+    # Generate schemas for multiple tasks
+    multiple_tasks = ["Create a new File", "Delete a File", "Rename a File"]
+    multiple_task_schemas = generator.generate_schemas("File System", "File Manipulation", multiple_tasks)
+    print("Multiple task schemas:", multiple_task_schemas)
 
 if __name__ == "__main__":
     #function_calling_flow()

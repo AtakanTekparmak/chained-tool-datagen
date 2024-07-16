@@ -1,6 +1,4 @@
-# components/function_schema_generator.py
-
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Union
 from src.models import construct_model
 from src.models.config import ModelConfig
 from src.schemas import FunctionsMetadata
@@ -9,35 +7,51 @@ class FunctionSchemaGenerator:
     def __init__(self, model_config: ModelConfig):
         self.model = construct_model(config=model_config)
 
-    def generate_schema(self, category: str, strategy: str, task: str) -> List[Dict[str, Any]]:
-        prompt = self._create_prompt(category, strategy, task)
+    def generate_schemas(self, category: str, strategy: str, tasks: Union[str, List[str]]) -> List[Dict[str, Any]]:
+        if isinstance(tasks, str):
+            tasks = [tasks]
+        
+        prompt = self._create_prompt(category, strategy, tasks)
         response = self.model.chat(prompt)
         return self._parse_response(response)
 
-    def _create_prompt(self, category: str, strategy: str, task: str) -> str:
+    def _create_prompt(self, category: str, strategy: str, tasks: List[str]) -> str:
+        tasks_str = "\n".join([f"- {task}" for task in tasks])
         return f"""
         Given the following curriculum details:
         Category: {category}
         Strategy: {strategy}
-        Task: {task}
+        Tasks:
+        {tasks_str}
 
-        Generate a JSON schema for a function that could be used to accomplish this task.
-        The schema should include:
+        Generate JSON schemas for functions that could be used to accomplish these tasks.
+        For each task, generate at least one function schema.
+        Each schema should include:
         - name: A descriptive name for the function
         - description: A brief description of what the function does
         - parameters: A list of parameters the function accepts, including their names and types
         - required: A list of required parameter names
         - returns: A list of return values, including their names and types
 
-        Provide the schema in valid JSON format. In between <schema> and </schema> tags.
+        Provide the schemas in valid JSON format. Wrap each schema in <schema> and </schema> tags.
+        Separate each schema with a newline.
         """
 
     def _parse_response(self, response: str) -> List[Dict[str, Any]]:
-        # Implement parsing logic here to convert the model's response
-        # into a list of function schemas
-        # This is a placeholder and should be replaced with actual parsing logic
         import json
-        print(response) 
-        # Extract the response between the <schema> and </schema> tags
-        response = response.split("<schema>")[1].split("</schema>")[0].strip()
-        return json.loads(response)
+        schemas = []
+        # Split the response by </schema> to handle multiple schemas
+        if "<schema>" not in response or "</schema>" not in response:
+            return []
+        
+        raw_schemas = response.split("</schema>")
+        for raw_schema in raw_schemas:
+            if "<schema>" in raw_schema:
+                # Extract the schema between the <schema> and </schema> tags
+                schema_json = raw_schema.split("<schema>")[1].strip()
+                try:
+                    schema = json.loads(schema_json)
+                    schemas.append(schema)
+                except json.JSONDecodeError:
+                    print(f"Failed to parse schema: {schema_json}")
+        return schemas
