@@ -1,26 +1,31 @@
 from typing import List, Dict, Any, Union
+import json
+
 from src.models import construct_model
 from src.models.config import ModelConfig
-from src.schemas import FunctionsMetadata
+from src.schemas import FunctionMetadata
 
 class FunctionSchemaGenerator:
     def __init__(self, model_config: ModelConfig):
         self.model = construct_model(config=model_config)
 
-    def generate_schemas(self, category: str, strategy: str, tasks: Union[str, List[str]]) -> List[Dict[str, Any]]:
+    def generate_schemas(self, category: str, subcategory: str, tasks: Union[str, List[str]]) -> List[Dict[str, Any]]:
+        """
+        Generate function schemas for a given category, subcategory, and tasks
+        """
         if isinstance(tasks, str):
             tasks = [tasks]
         
-        prompt = self._create_prompt(category, strategy, tasks)
+        prompt = self._create_prompt(category, subcategory, tasks)
         response = self.model.chat(prompt)
         return self._parse_response(response)
 
-    def _create_prompt(self, category: str, strategy: str, tasks: List[str]) -> str:
+    def _create_prompt(self, category: str, subcategory: str, tasks: List[str]) -> str:
         tasks_str = "\n".join([f"- {task}" for task in tasks])
         return f"""
         Given the following curriculum details:
         Category: {category}
-        Strategy: {strategy}
+        Subcategory: {subcategory}
         Tasks:
         {tasks_str}
 
@@ -34,11 +39,10 @@ class FunctionSchemaGenerator:
         - returns: A list of return values, including their names and types
 
         Provide the schemas in valid JSON format. Wrap each schema in <schema> and </schema> tags.
-        Separate each schema with a newline.
+        Separate each schema with a newline. 
         """
 
     def _parse_response(self, response: str) -> List[Dict[str, Any]]:
-        import json
         schemas = []
         # Split the response by </schema> to handle multiple schemas
         if "<schema>" not in response or "</schema>" not in response:
@@ -54,4 +58,20 @@ class FunctionSchemaGenerator:
                     schemas.append(schema)
                 except json.JSONDecodeError:
                     print(f"Failed to parse schema: {schema_json}")
+        
+        """
+        # Parse the schemas into a list of FunctionMetadata objects
+        function_schemas = []
+
+        for schema in schemas:
+            function_schema = FunctionMetadata(
+                name=schema.get("name"),
+                description=schema.get("description"),
+                parameters=schema.get("parameters"),
+                returns=schema.get("returns")
+            )
+            function_schemas.append(function_schema)
+        
+        return function_schemas
+        """
         return schemas

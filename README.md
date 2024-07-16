@@ -3,7 +3,7 @@
 The general idea of the pipeline is this (currently in development):
 ```mermaid
 graph TD
-    A[Curriculum<br>Category, Strategy, Task] -->|Function Schema Generating LLM| B[Generated Function Schemas]
+    A[Curriculum<br>Category, Subcategory, Task] -->|Function Schema Generating LLM| B[Generated Function Schemas]
     B -->|Dummy Function Generating LLM| C[Python Functions<br>with Static Values]
     B -->|User Query Generating LLM| D[User Query]
     D & B --> E[Function Calling LLM]
