@@ -6,6 +6,9 @@ from src.models.config import ModelConfig
 from src.schemas import FunctionMetadata
 
 class FunctionSchemaGenerator:
+    """
+    Class to generate function schemas based on a given category, subcategory, and tasks
+    """
     def __init__(self, model_config: ModelConfig):
         self.model = construct_model(config=model_config)
 
@@ -34,7 +37,7 @@ class FunctionSchemaGenerator:
         Each schema should include:
         - name: A descriptive name for the function
         - description: A brief description of what the function does
-        - parameters: A list of parameters the function accepts, including their names and types
+        - parameters: A dict of parameters the function accepts, including their names and types
         - required: A list of required parameter names
         - returns: A list of return values, including their names and types
 
@@ -59,19 +62,22 @@ class FunctionSchemaGenerator:
                 except json.JSONDecodeError:
                     print(f"Failed to parse schema: {schema_json}")
         
-        """
         # Parse the schemas into a list of FunctionMetadata objects
         function_schemas = []
 
         for schema in schemas:
+            name = schema.get("name", "")
+            description = schema.get("description", "")
+            parameters = schema.get("parameters", [])
+            required = schema.get("required", [])
+            returns = schema.get("returns", [])
             function_schema = FunctionMetadata(
-                name=schema.get("name"),
-                description=schema.get("description"),
-                parameters=schema.get("parameters"),
-                returns=schema.get("returns")
+                name=name,
+                description=description,
+                parameters=parameters,
+                required=required,
+                returns=returns
             )
             function_schemas.append(function_schema)
         
-        return function_schemas
-        """
         return schemas
