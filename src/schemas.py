@@ -9,6 +9,19 @@ from easy_fnc.schemas import (
 )
 from easy_fnc.schemas import ModelResponse as ChainedFNCResponse
 
+class CurriculumRow(BaseModel):
+    """
+    Pydantic model for a curriculum row
+    """
+    category: str
+    subcategory: str
+    task: str
+
+    @classmethod
+    def from_dict(cls, row: dict[str, any]) -> 'CurriculumRow':
+        """Create a CurriculumRow object from a dictionary"""
+        return cls(category=row["category"], subcategory=row["subcategory"], task=row["task"])
+
 class FunctionsMetadata(BaseModel):
     """
     Pydantic model for functions metadata

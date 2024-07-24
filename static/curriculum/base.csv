@@ -1,4 +1,4 @@
-Category, SubCategory, Task
+category,subcategory,task
 File System, File, Create a new File
 File System, File, Edit the contents of a File
 File System, File, Read the contents of a File
@@ -14,12 +14,10 @@ File System, Notes, Create a new Note
 File System, Notes, Edit the contents of a Note
 File System, Notes, Read the contents of a Note
 File System, Notes, Delete a Note
-
 Media, Image, Generate an image from text using a diffuser 
 Media, Image, Perform OCR on an image
 Media, Audio, Generate an audio file from text
 Media, Audio, Transcribe an audio file
-
 Web Browser, Search, Search over a query
 Web Browser, Search, Search for images
 Web Browser, Search, Search for news
@@ -29,21 +27,18 @@ Web Browser, Access, Download a file/files from a website
 Web Browser, Navigation, Interact with pop-ups and dialogs
 Web Browser, Navigation, Handle multiple tabs and windows
 Web Browser, Navigation, Fill out forms
-
 Communication, Email, Send an email
 Communication, Email, Read the contents of an email
 Communication, Email, Retrieve the last n emails
 Communication, Messages, Send a text message
 Communication, Messages, Read the contents of a text message
 Communication, Messages, Retrieve the last n text messages
-
 Scheduling, Calendar, Create an event
 Scheduling, Calendar, Edit an event
 Scheduling, Calendar, Delete an event
 Scheduling, Calendar, Retrieve the events of a day
 Scheduling, Calendar, Retrieve the events of a week
 Scheduling, Calendar, Retrieve the events of a month
-
 Scheduling, To-Do List, Create a task
 Scheduling, To-Do List, Edit a task
 Scheduling, To-Do List, Delete a task
@@ -51,7 +46,6 @@ Scheduling, To-Do List, Mark a task as completed
 Scheduling, To-Do List, Retrieve the tasks of a day
 Scheduling, To-Do List, Retrieve the tasks of a week
 Scheduling, To-Do List, Retrieve the tasks of a month
-
 Daily Life, Weather, Retrieve the weather forecast of a location for a day
 Daily Life, Weather, Retrieve th weekly weather forecast of a location 
 Daily Life, Food, Order food from an app
@@ -60,13 +54,11 @@ Daily Life, Food, Order food from a restaurant
 Daily Life, Food, Check the status of a food order (app/website)
 Daily Life, Food, Cancel a food order
 Daily Life, Food, Schedule a food order
-
 Basic Utilities, Statistics, Calculate the mean of a list of numbers
 Basic Utilities, Statistics, Calculate the median of a list of numbers
 Basic Utilities, Text Processing, Search regex patterns in a text
 Basic Utilities, Text Processing, Convert markdown to HTML
 Basic Utilities, Text Processing, Convert HTML to markdown
-
 Device Control, Volume, Increase the volume
 Device Control, Volume, Decrease the volume
 Device Control, Volume, Mute the volume
