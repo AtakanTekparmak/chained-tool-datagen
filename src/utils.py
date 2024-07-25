@@ -1,15 +1,13 @@
 import tomllib
 from os.path import join
 import csv
+import json
+import os
 
 from jinja2 import Environment, FileSystemLoader
 
 from src.schemas import FunctionsMetadata, CurriculumRow
-
-# Declare constants
-STATIC_DIR = "static"
-FNC_TEMPLATE_PATH = "chained_fnc_call.j2"
-CURRICULUM_PATH = "static/curriculum/base.csv"
+from src.settings import STATIC_DIR, CURRICULUM_PATH, FN_CALL_TEMPLATE_PATH, FN_GENERATE_TEMPLATE_PATH, RESULT_DIR, FN_SCHEMAS_PATH
 
 # Set up Jinja2 environment
 env = Environment(loader=FileSystemLoader(join(STATIC_DIR, "templates")))
@@ -32,21 +30,33 @@ def load_csv(file_path: str) -> list[dict[str, any]]:
         print(f"CSV file not found: {file_path}")
         return []
     
-def load_fnc_template(
-        template_name: str = FNC_TEMPLATE_PATH,
+def load_jinja_template(template_name: str, context: dict[str, any]) -> str:
+    """Load a Jinja2 template and render it with the given context"""
+    template = env.get_template(template_name)
+    return template.render(context)
+    
+def load_fn_call_template(
+        template_name: str = FN_CALL_TEMPLATE_PATH,
         fnc_metadata: FunctionsMetadata = None
     ) -> str:
     """Load the function template from the Jinja2 template file"""
-    template = env.get_template(template_name)
-    
-    if fnc_metadata is not None:
-        return template.render(functions_metadata=fnc_metadata.model_dump_json(indent=2))
-    else:
-        print("No function metadata provided. Rendering an empty template.")
-        return template.render(functions_metadata=[])
+    context = {"functions_metadata": fnc_metadata} if fnc_metadata else {"functions_metadata": []}
+    return load_jinja_template(template_name, context)
+
+def load_fn_generate_template(
+        template_name: str = FN_GENERATE_TEMPLATE_PATH,
+        category: str = None,
+        subcategory: str = None,
+        tasks: list[str] = []
+    ) -> str:
+    """Load the function generation template from the Jinja2 template file"""
+    context = {"category": category, "subcategory": subcategory, "tasks": tasks}
+    return load_jinja_template(template_name, context)
     
 def load_curriculum(file_path: str = CURRICULUM_PATH) -> dict[str, list[CurriculumRow]]:
-    """Load a curriculum CSV file and return a list of CurriculumRow objects"""
+    """
+    Load the curriculum from a CSV file and group it by subcategory
+    """
     curriculum_data = load_csv(file_path)
     curriculum_list = [CurriculumRow.from_dict(row) for row in curriculum_data]
 
@@ -63,3 +73,15 @@ def _group_curriculum_by_subcategory(curriculum: list[CurriculumRow]) -> dict[st
         grouped_curriculum[row.subcategory].append(row)
     
     return grouped_curriculum
+
+def save_json(file_path: str, data: dict[str, any]):
+    """Save a dictionary to a JSON file"""
+    # Create the directory if it doesn't exist
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+                
+    with open(file_path, "w") as f:
+        json.dump(data, f, indent=2)
+
+def save_function_schemas(schemas: list[dict[str, any]], file_path: str = FN_SCHEMAS_PATH):
+    """Save function schemas to a JSON file"""
+    save_json(file_path, schemas)

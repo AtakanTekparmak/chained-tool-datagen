@@ -1,5 +1,6 @@
+from __future__ import annotations
 from pydantic import BaseModel
-from typing import Union, Optional
+from typing import Union, Optional, List
 
 from easy_fnc.schemas import (
     FunctionCall,
@@ -8,6 +9,21 @@ from easy_fnc.schemas import (
     FunctionMetadata,
 )
 from easy_fnc.schemas import ModelResponse as ChainedFNCResponse
+
+class Parameters(BaseModel):
+    name: str
+    type: str
+
+class Return(BaseModel):
+    name: str
+    type: str
+
+class FunctionSchema(BaseModel):
+    name: str
+    description: str
+    parameters: Parameters
+    required: List[str]
+    returns: List[Return]
 
 class CurriculumRow(BaseModel):
     """

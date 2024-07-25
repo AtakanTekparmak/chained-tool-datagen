@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from src.models import construct_model      
 from src.schemas import ChainedFNCResponse, FunctionsMetadata
 from src.models.config import ModelConfig
-from src.utils import load_fnc_template, load_curriculum
+from src.utils import load_fn_call_template, load_curriculum, save_function_schemas
 
 from easy_fnc.function_caller import FunctionCallingEngine, create_functions_metadata
 
@@ -13,14 +13,14 @@ def function_calling_flow():
 
     # Load the function call template
     fnc_metadata = create_functions_metadata(file_path="static/sample_functions.py")
-    fnc_template = load_fnc_template(
+    fn_call_template = load_fn_call_template(
         fnc_metadata=FunctionsMetadata.from_list(fnc_metadata)
     )
     
     # Create a ModelConfig instance
     model_config = ModelConfig(
         client="groq",
-        system_prompt=fnc_template,
+        system_prompt=fn_call_template,
         temperature=0.5,
         fewshot_examples=None
     )
@@ -55,20 +55,16 @@ def function_generating_flow():
         fewshot_examples=None
     )
     generator = FunctionSchemaGenerator(model_config)
-    
+
     # Load the curriculum
     curriculum = load_curriculum()
     
     # Generate schemas for each subcategory in the curriculum
-    schemas = []
-    for subcategory in curriculum:
-        tasks = [row.task for row in curriculum[subcategory]]
-        category = curriculum[subcategory][0].category
-        print(f"Generating schemas for subcategory: {subcategory}")
-        print(f"Tasks: {tasks}")
-        task_schemas = generator.generate_schemas(category, subcategory, tasks)
-        schemas.extend(task_schemas)
-        print("Task schemas:", task_schemas)
+    schemas = generator.generate_by_curriculum(curriculum, verbose=True)
+
+    # Save the schemas to a JSON file
+    save_function_schemas(schemas)
+    
 
 if __name__ == "__main__":
     #function_calling_flow()

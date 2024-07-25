@@ -3,7 +3,8 @@ import json
 
 from src.models import construct_model
 from src.models.config import ModelConfig
-from src.schemas import FunctionMetadata
+from src.schemas import CurriculumRow
+from src.utils import load_fn_generate_template
 
 class FunctionSchemaGenerator:
     """
@@ -11,6 +12,30 @@ class FunctionSchemaGenerator:
     """
     def __init__(self, model_config: ModelConfig):
         self.model = construct_model(config=model_config)
+
+    def generate_by_curriculum(
+            self, 
+            curriculum: Dict[str, List[CurriculumRow]],
+            verbose: bool = False
+        ) -> List[Dict[str, Any]]:
+        """
+        Generate function schemas for each subcategory in the curriculum
+        """
+        schemas = []
+        for subcategory in curriculum:
+            tasks = [row.task for row in curriculum[subcategory]]
+            category = curriculum[subcategory][0].category
+            print(f"Generating schemas for subcategory: {subcategory}")
+            print(f"Tasks: {tasks}")
+            task_schemas = self.generate_schemas(category, subcategory, tasks)
+            print(f"Generated {len(task_schemas)} schemas:")
+
+            if verbose:
+                for schema in task_schemas:
+                    json_schema = json.dumps(schema, indent=2)
+                    print(json_schema)
+            schemas.extend(task_schemas)
+        return schemas
 
     def generate_schemas(self, category: str, subcategory: str, tasks: Union[str, List[str]]) -> List[Dict[str, Any]]:
         """
@@ -25,25 +50,7 @@ class FunctionSchemaGenerator:
 
     def _create_prompt(self, category: str, subcategory: str, tasks: List[str]) -> str:
         tasks_str = "\n".join([f"- {task}" for task in tasks])
-        return f"""
-        Given the following curriculum details:
-        Category: {category}
-        Subcategory: {subcategory}
-        Tasks:
-        {tasks_str}
-
-        Generate JSON schemas for functions that could be used to accomplish these tasks.
-        For each task, generate at least one function schema.
-        Each schema should include:
-        - name: A descriptive name for the function
-        - description: A brief description of what the function does
-        - parameters: A dict of parameters the function accepts, including their names and types
-        - required: A list of required parameter names
-        - returns: A list of return values, including their names and types
-
-        Provide the schemas in valid JSON format. Wrap each schema in <schema> and </schema> tags.
-        Separate each schema with a newline. 
-        """
+        return load_fn_generate_template(category=category, subcategory=subcategory, tasks=tasks_str)
 
     def _parse_response(self, response: str) -> List[Dict[str, Any]]:
         schemas = []
@@ -61,23 +68,5 @@ class FunctionSchemaGenerator:
                     schemas.append(schema)
                 except json.JSONDecodeError:
                     print(f"Failed to parse schema: {schema_json}")
-        
-        # Parse the schemas into a list of FunctionMetadata objects
-        function_schemas = []
-
-        for schema in schemas:
-            name = schema.get("name", "")
-            description = schema.get("description", "")
-            parameters = schema.get("parameters", [])
-            required = schema.get("required", [])
-            returns = schema.get("returns", [])
-            function_schema = FunctionMetadata(
-                name=name,
-                description=description,
-                parameters=parameters,
-                required=required,
-                returns=returns
-            )
-            function_schemas.append(function_schema)
         
         return schemas
