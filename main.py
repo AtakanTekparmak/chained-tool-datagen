@@ -1,3 +1,4 @@
+import argparse
 from dotenv import load_dotenv
 
 from src.models import construct_model      
@@ -44,8 +45,33 @@ def function_calling_flow():
     # Call the functions from the model response
     outputs = fnc_engine.call_functions(model_response.function_calls)
     print(outputs)
+
+def build_arg_parser():
+    """ Build an argument parser for the script"""
+    parser = argparse.ArgumentParser(description="Chained Function Calling Data Generation")
+    parser.add_argument(
+        "--flow",
+        type=str,
+        default="function_generating",
+        help="The flow to execute",
+    )
+    return parser
+    
+def main():
+    """Main function for the script"""
+    # Parse the arguments
+    arg_parser = build_arg_parser()
+    args = arg_parser.parse_args()
+
+    # Execute the flow based on the argument
+    match args.flow:
+        case "function_calling":
+            function_calling_flow()
+        case "function_generating" | "function_generation":
+            function_generating_flow()
+        case _:
+            print("Invalid flow. Please choose either 'function_calling' or 'function_generating'.")
     
 
 if __name__ == "__main__":
-    #function_calling_flow()
-    function_generating_flow()
+    main()

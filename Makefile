@@ -10,6 +10,7 @@ VENV_NAME := venv
 
 # .env file
 ENV_FILE := .env
+
 # Help target
 help:
 	@echo "Usage: make [target]"
@@ -35,10 +36,10 @@ run:
 	. $(VENV_NAME)/bin/activate && \
 	$(PYTHON) main.py
 
-# Run the data-genie-agents/datagen.py
-run_datagen:
+# Run the function schema generating flow 
+run_schema_gen:
 	. $(VENV_NAME)/bin/activate && \
-	$(PYTHON) $(DATA_GENIE_AGENTS_REPO_DIR)/datagen.py --generation_type function_calling --num_tasks 2 --agent_config chained_groq.json --local_embeddings True
+	$(PYTHON) main.py --flow function_generation
 
 # Clean the virtual environment
 clean:
