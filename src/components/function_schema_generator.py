@@ -1,10 +1,10 @@
-from typing import List, Dict, Any, Union
+from typing import List, Dict, Any, Union, Optional
 import json
 
 from src.models import construct_model
 from src.models.config import ModelConfig
 from src.schemas import CurriculumRow
-from src.utils import load_fn_generate_template
+from src.utils import load_fn_generate_template, load_curriculum, save_function_schemas
 
 class FunctionSchemaGenerator:
     """
@@ -70,3 +70,25 @@ class FunctionSchemaGenerator:
                     print(f"Failed to parse schema: {schema_json}")
         
         return schemas
+    
+def function_generating_flow(model_config: Optional[ModelConfig] = None):
+    """
+    Flow for function schema generation.
+    """
+    if not model_config:
+        model_config = ModelConfig(
+            client="groq",
+            system_prompt="You are a helpful assistant that generates function schemas.",
+            temperature=0.7,
+            fewshot_examples=None
+        )
+    generator = FunctionSchemaGenerator(model_config)
+
+    # Load the curriculum
+    curriculum = load_curriculum()
+    
+    # Generate schemas for each subcategory in the curriculum
+    schemas = generator.generate_by_curriculum(curriculum, verbose=True)
+
+    # Save the schemas to a JSON file
+    save_function_schemas(schemas)

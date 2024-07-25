@@ -3,7 +3,8 @@ from dotenv import load_dotenv
 from src.models import construct_model      
 from src.schemas import ChainedFNCResponse, FunctionsMetadata
 from src.models.config import ModelConfig
-from src.utils import load_fn_call_template, load_curriculum, save_function_schemas
+from src.utils import load_fn_call_template
+from src.components.function_schema_generator import function_generating_flow
 
 from easy_fnc.function_caller import FunctionCallingEngine, create_functions_metadata
 
@@ -43,27 +44,6 @@ def function_calling_flow():
     # Call the functions from the model response
     outputs = fnc_engine.call_functions(model_response.function_calls)
     print(outputs)
-
-def function_generating_flow():
-    from src.components.function_schema_generator import FunctionSchemaGenerator
-
-    # Create a ModelConfig instance
-    model_config = ModelConfig(
-        client="groq",
-        system_prompt="You are a helpful assistant that generates function schemas.",
-        temperature=0.7,
-        fewshot_examples=None
-    )
-    generator = FunctionSchemaGenerator(model_config)
-
-    # Load the curriculum
-    curriculum = load_curriculum()
-    
-    # Generate schemas for each subcategory in the curriculum
-    schemas = generator.generate_by_curriculum(curriculum, verbose=True)
-
-    # Save the schemas to a JSON file
-    save_function_schemas(schemas)
     
 
 if __name__ == "__main__":
