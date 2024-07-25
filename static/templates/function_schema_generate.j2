@@ -1,0 +1,49 @@
+Given the following curriculum details:
+Category: {{category}}
+Subcategory: {{subcategory}}
+Tasks:
+{{tasks}}
+
+Generate JSON schemas for functions that could be used to accomplish these tasks.
+For each task, generate at least one function schema.
+Each schema should include:
+    - name: A descriptive name for the function
+    - description: A brief description of what the function does
+    - parameters: A dict of parameters the function accepts, including their names and types
+    - required: A list of required parameter names
+    - returns: A list of return values, including their names and types
+
+Adhere to the following guidelines:
+    - Provide the schemas in valid JSON format. Wrap each schema in <schema> and </schema> tags.
+    - Separate each schema with a newline. 
+    - Use snake_case for function names and variables.
+    - Ensure that the function names are descriptive and relevant to the task.
+    - When dealing with files, use file_path as the identifying parameter instead of file_name or file_id.
+    - Include a diverse set of function schemas without repeating similar functions.
+    - Do not include any additional information outside the JSON schemas in between the <schema> tags.
+    - ALWAYS use double quotes for JSON keys and string values.
+
+Following is an example response for the Category, Subcategory, and Task pair of "File System", "File", "Create a new File":
+<schema>
+{
+    "name": "create_new_file",
+    "description": "Creates a new file with the provided content at the specified file path.",
+    "parameters": [
+        {
+            "name": "file_path",
+            "type": "str"
+        },
+        {
+            "name": "content",
+            "type": "str"
+        }
+    ],
+    "required": ["file_path", "content"],
+    "returns": [
+        {
+            "name": "success",
+            "type": "bool"
+        }
+    ]
+}
+</schema>
