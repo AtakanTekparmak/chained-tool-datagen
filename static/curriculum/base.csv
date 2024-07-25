@@ -7,6 +7,13 @@ File System, File, Copy a File
 File System, File, Move a File
 File System, File, Rename a File
 File Syste, Folder, Create a new Folder
+File System, Folder, Delete a Folder
+File System, Folder, Copy a Folder
+File System, Folder, Move a Folder
+File System, Folder, Rename a Folder
+File System, Folder, List the contents of a Folder
+File System, Folder, Move a File to a Folder
+File System, Folder, Copy a File to a Folder
 File System, Handling File Formats, Read the contents of a PDF file
 File System, Handling File Formats, Read the contents of a Word file
 File System, Handling File Formats, Read the contents of an Excel file
