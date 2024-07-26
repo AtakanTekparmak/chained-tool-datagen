@@ -70,28 +70,6 @@ class FunctionSchemaGenerator:
                     print(f"Failed to parse schema: {schema_json}")
         
         return schemas
-    
-def function_generating_flow(model_config: Optional[ModelConfig] = None):
-    """
-    Flow for function schema generation.
-    """
-    if not model_config:
-        model_config = ModelConfig(
-            client="groq",
-            system_prompt="You are a helpful assistant that generates function schemas.",
-            temperature=0.7,
-            fewshot_examples=None
-        )
-    generator = FunctionSchemaGenerator(model_config)
-
-    # Load the curriculum
-    curriculum = load_curriculum()
-    
-    # Generate schemas for each subcategory in the curriculum
-    schemas = generator.generate_by_curriculum(curriculum, verbose=True)
-
-    # Save the schemas to a JSON file
-    save_function_schemas(schemas)
 
 def generate_function_schemas(
         model_config: Optional[ModelConfig] = None,
