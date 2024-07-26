@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from src.models import construct_model      
 from src.schemas import ChainedFNCResponse, FunctionsMetadata
 from src.models.config import ModelConfig
-from src.utils import load_fn_call_template
+from src.templates import load_fn_call_template
 from src.components.function_schema_generator import generate_function_schemas
 
 from easy_fnc.function_caller import FunctionCallingEngine, create_functions_metadata

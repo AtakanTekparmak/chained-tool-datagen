@@ -1,0 +1,33 @@
+{% raw %}
+Given the following function schemas:
+
+<schema>
+{{ schemas | indent(2) }}
+</schema>
+
+Generate {{ num_examples }} pairs of User Queries and Required Functions. Each pair should consist of a user query that may require the use of zero, one, or multiple functions from the provided schemas.
+
+Adhere to the following guidelines:
+1. User Queries should be realistic and diverse, covering various scenarios related to file and folder operations.
+2. Required Functions should list all functions necessary to complete the task described in the User Query.
+3. Some queries may not require any functions, some may require one, and others may require multiple functions.
+4. Ensure that the Required Functions accurately match the needs of the User Query.
+5. Use a mix of simple and complex queries that might require chaining multiple functions.
+6. Required functions should also contain 1-3 functions that is not required for the query to be completed.
+
+Format your response as follows:
+
+</examples>
+[
+    {
+        "user_query": "User Query 1",
+        "required_functions": ["Function 1", "Function 2", "Function 3"]
+    },
+    {
+        "user_query": "User Query 2",
+        "required_functions": ["Function 1", "Function 2"]
+    },
+    ...
+]
+</examples>
+{% endraw %}

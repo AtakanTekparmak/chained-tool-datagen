@@ -1,16 +1,10 @@
 import tomllib
-from os.path import join
 import csv
 import json
 import os
 
-from jinja2 import Environment, FileSystemLoader
-
-from src.schemas import FunctionsMetadata, CurriculumRow, Curriculum
-from src.settings import STATIC_DIR, CURRICULUM_PATH, FN_CALL_TEMPLATE_PATH, FN_GENERATE_TEMPLATE_PATH, RESULT_DIR, FN_SCHEMAS_PATH
-
-# Set up Jinja2 environment
-env = Environment(loader=FileSystemLoader(join(STATIC_DIR, "templates")))
+from src.schemas import CurriculumRow, Curriculum
+from src.settings import STATIC_DIR, CURRICULUM_PATH, FN_SCHEMAS_PATH
 
 def load_toml(file_path: str) -> dict[str, any]:
     """Load a TOML file and return the parsed content"""
@@ -29,29 +23,6 @@ def load_csv(file_path: str) -> list[dict[str, any]]:
     except FileNotFoundError:
         print(f"CSV file not found: {file_path}")
         return []
-    
-def load_jinja_template(template_name: str, context: dict[str, any]) -> str:
-    """Load a Jinja2 template and render it with the given context"""
-    template = env.get_template(template_name)
-    return template.render(context)
-    
-def load_fn_call_template(
-        template_name: str = FN_CALL_TEMPLATE_PATH,
-        fnc_metadata: FunctionsMetadata = None
-    ) -> str:
-    """Load the function template from the Jinja2 template file"""
-    context = {"functions_metadata": fnc_metadata} if fnc_metadata else {"functions_metadata": []}
-    return load_jinja_template(template_name, context)
-
-def load_fn_generate_template(
-        template_name: str = FN_GENERATE_TEMPLATE_PATH,
-        category: str = None,
-        subcategory: str = None,
-        tasks: list[str] = []
-    ) -> str:
-    """Load the function generation template from the Jinja2 template file"""
-    context = {"category": category, "subcategory": subcategory, "tasks": tasks}
-    return load_jinja_template(template_name, context)
     
 def load_curriculum(file_path: str = CURRICULUM_PATH) -> Curriculum:
     """

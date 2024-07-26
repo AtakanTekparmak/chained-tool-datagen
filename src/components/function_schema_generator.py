@@ -4,7 +4,8 @@ import json
 from src.models import construct_model
 from src.models.config import ModelConfig
 from src.schemas import Curriculum, FunctionSchema
-from src.utils import load_fn_generate_template, load_curriculum, save_function_schemas
+from src.utils import load_curriculum, save_function_schemas
+from src.templates import load_fn_generate_template
 
 class FunctionSchemaGenerator:
     """
