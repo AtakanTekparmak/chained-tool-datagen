@@ -6,7 +6,7 @@ import os
 
 from jinja2 import Environment, FileSystemLoader
 
-from src.schemas import FunctionsMetadata, CurriculumRow
+from src.schemas import FunctionsMetadata, CurriculumRow, Curriculum
 from src.settings import STATIC_DIR, CURRICULUM_PATH, FN_CALL_TEMPLATE_PATH, FN_GENERATE_TEMPLATE_PATH, RESULT_DIR, FN_SCHEMAS_PATH
 
 # Set up Jinja2 environment
@@ -53,7 +53,7 @@ def load_fn_generate_template(
     context = {"category": category, "subcategory": subcategory, "tasks": tasks}
     return load_jinja_template(template_name, context)
     
-def load_curriculum(file_path: str = CURRICULUM_PATH) -> dict[str, list[CurriculumRow]]:
+def load_curriculum(file_path: str = CURRICULUM_PATH) -> Curriculum:
     """
     Load the curriculum from a CSV file and group it by subcategory
     """
@@ -63,7 +63,7 @@ def load_curriculum(file_path: str = CURRICULUM_PATH) -> dict[str, list[Curricul
     return _group_curriculum_by_subcategory(curriculum_list)
 
 
-def _group_curriculum_by_subcategory(curriculum: list[CurriculumRow]) -> dict[str, list[CurriculumRow]]:
+def _group_curriculum_by_subcategory(curriculum: list[CurriculumRow]) -> Curriculum:
     """Group the curriculum by subcategory"""
     grouped_curriculum = {}
     

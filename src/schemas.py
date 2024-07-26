@@ -10,7 +10,7 @@ from easy_fnc.schemas import (
 )
 from easy_fnc.schemas import ModelResponse as ChainedFNCResponse
 
-class Parameters(BaseModel):
+class Parameter(BaseModel):
     name: str
     type: str
 
@@ -21,9 +21,20 @@ class Return(BaseModel):
 class FunctionSchema(BaseModel):
     name: str
     description: str
-    parameters: Parameters
+    parameters: List[Parameter]
     required: List[str]
     returns: List[Return]
+
+    @classmethod
+    def from_dict(cls, function_schema: dict[str, any]) -> 'FunctionSchema':
+        """Create a FunctionSchema object from a dictionary"""
+        return cls(
+            name=function_schema["name"],
+            description=function_schema["description"],
+            parameters=[Parameter(**p) for p in function_schema["parameters"]],
+            required=function_schema["required"],
+            returns=[Return(**r) for r in function_schema["returns"]]
+        )
 
 class CurriculumRow(BaseModel):
     """
@@ -37,6 +48,8 @@ class CurriculumRow(BaseModel):
     def from_dict(cls, row: dict[str, any]) -> 'CurriculumRow':
         """Create a CurriculumRow object from a dictionary"""
         return cls(category=row["category"], subcategory=row["subcategory"], task=row["task"])
+    
+Curriculum = dict[str, list[CurriculumRow]]
 
 class FunctionsMetadata(BaseModel):
     """

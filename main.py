@@ -5,7 +5,7 @@ from src.models import construct_model
 from src.schemas import ChainedFNCResponse, FunctionsMetadata
 from src.models.config import ModelConfig
 from src.utils import load_fn_call_template
-from src.components.function_schema_generator import function_generating_flow
+from src.components.function_schema_generator import function_generating_flow, generate_function_schemas
 
 from easy_fnc.function_caller import FunctionCallingEngine, create_functions_metadata
 
@@ -68,7 +68,8 @@ def main():
         case "function_calling":
             function_calling_flow()
         case "function_generating" | "function_generation":
-            function_generating_flow()
+            schemas = generate_function_schemas(verbose=True, save=True)
+            print(f"Generated {len(schemas)} function schemas.")
         case _:
             print("Invalid flow. Please choose either 'function_calling' or 'function_generating'.")
     
