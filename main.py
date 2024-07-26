@@ -68,8 +68,7 @@ def main():
         case "function_calling":
             function_calling_flow()
         case "function_generating" | "function_generation":
-            schemas = generate_function_schemas(verbose=True, save=True)
-            print(f"Generated {len(schemas)} function schemas.")
+            schemas = generate_function_schemas(verbose=False, save=True)
         case _:
             print("Invalid flow. Please choose either 'function_calling' or 'function_generating'.")
     
