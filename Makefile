@@ -41,6 +41,11 @@ run_schema_gen:
 	. $(VENV_NAME)/bin/activate && \
 	$(PYTHON) main.py --flow function_generation
 
+# Run the user query generating flow
+run_user_query_gen:
+	. $(VENV_NAME)/bin/activate && \
+	$(PYTHON) main.py --flow user_query_generation
+
 # Run the function calling flow
 run_function_call:
 	. $(VENV_NAME)/bin/activate && \

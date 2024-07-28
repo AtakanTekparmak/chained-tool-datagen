@@ -35,6 +35,21 @@ class FunctionSchema(BaseModel):
             required=function_schema["required"],
             returns=[Return(**r) for r in function_schema["returns"]]
         )
+    
+class UserQuery(BaseModel):
+    """
+    Pydantic model for user query
+    """
+    query: str
+    available_functions: list[str]
+
+    @classmethod
+    def from_dict(cls, user_query: dict[str, any]) -> 'UserQuery':
+        """Create a UserQuery object from a dictionary"""
+        return cls(
+            query=user_query["user_query"],
+            available_functions=user_query["available_functions"]
+        )
 
 class CurriculumRow(BaseModel):
     """

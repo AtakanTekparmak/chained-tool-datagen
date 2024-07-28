@@ -1,0 +1,92 @@
+[
+  {
+    "query": "I want to create a new folder named 'Documents' in the root directory and then move all files with the '.txt' extension from the 'Downloads' folder to the newly created 'Documents' folder.",
+    "available_functions": [
+      "create_folder",
+      "move_files",
+      "list_files",
+      "delete_folder"
+    ]
+  },
+  {
+    "query": "I need to rename the file 'example.txt' to 'sample.txt' and then copy it to the 'Desktop' folder.",
+    "available_functions": [
+      "rename_file",
+      "copy_file",
+      "delete_file",
+      "create_folder"
+    ]
+  },
+  {
+    "query": "I want to delete the empty folder 'Old_Files' and all its subfolders.",
+    "available_functions": [
+      "delete_folder",
+      "list_folders",
+      "create_folder",
+      "move_files"
+    ]
+  },
+  {
+    "query": "I need to find all files with the '.pdf' extension in the 'Documents' folder and its subfolders, and then print their paths.",
+    "available_functions": [
+      "find_files",
+      "list_files",
+      "copy_file",
+      "rename_file"
+    ]
+  },
+  {
+    "query": "I want to create a new file named 'example.txt' in the 'Documents' folder with the content 'Hello World!' and then append 'This is a test.' to the file.",
+    "available_functions": [
+      "create_file",
+      "write_file",
+      "append_file",
+      "delete_file"
+    ]
+  },
+  {
+    "query": "I need to list all files and folders in the root directory, including their sizes and last modified dates.",
+    "available_functions": [
+      "list_files",
+      "list_folders",
+      "get_file_size",
+      "get_last_modified"
+    ]
+  },
+  {
+    "query": "I want to move the file 'example.txt' from the 'Documents' folder to the 'Desktop' folder and then rename it to 'sample.txt'.",
+    "available_functions": [
+      "move_file",
+      "rename_file",
+      "copy_file",
+      "delete_file"
+    ]
+  },
+  {
+    "query": "I need to delete the file 'example.txt' from the 'Downloads' folder.",
+    "available_functions": [
+      "delete_file",
+      "list_files",
+      "move_file",
+      "copy_file"
+    ]
+  },
+  {
+    "query": "I want to create a new folder named 'Pictures' in the 'Documents' folder and then copy all files with the '.jpg' extension from the 'Downloads' folder to the newly created 'Pictures' folder.",
+    "available_functions": [
+      "create_folder",
+      "copy_files",
+      "list_files",
+      "delete_folder"
+    ]
+  },
+  {
+    "query": "I need to find the size of the file 'example.txt' in the 'Documents' folder.",
+    "available_functions": [
+      "get_file_size",
+      "list_files",
+      "copy_file",
+      "rename_file"
+    ]
+  }
+]

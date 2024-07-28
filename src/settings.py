@@ -12,3 +12,4 @@ QUERY_GENERATE_TEMPLATE_PATH = os.environ.get("QUERY_GENERATE_TEMPLATE_PATH", "u
 # Result directory and paths
 RESULT_DIR = os.environ.get("RESULT_DIR", "results")
 FN_SCHEMAS_PATH = os.environ.get("FN_SCHEMAS_PATH", os.path.join(RESULT_DIR, "function_schemas.json"))
+USER_QUERIES_PATH = os.environ.get("USER_QUERIES_PATH", os.path.join(RESULT_DIR, "user_queries.json"))

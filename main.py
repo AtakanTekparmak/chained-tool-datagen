@@ -5,7 +5,10 @@ from src.models import construct_model
 from src.schemas import ChainedFNCResponse, FunctionsMetadata
 from src.models.config import ModelConfig
 from src.templates import load_fn_call_template
+from src.utils import load_function_schemas
+
 from src.components.function_schema_generator import generate_function_schemas
+from src.components.user_query_generator import generate_user_queries
 
 from easy_fnc.function_caller import FunctionCallingEngine, create_functions_metadata
 
@@ -69,6 +72,13 @@ def main():
             function_calling_flow()
         case "function_generating" | "function_generation":
             schemas = generate_function_schemas(verbose=False, save=True)
+        case "user_query_generation" | "generate_user_queries":
+            function_schemas = load_function_schemas()
+            user_queries = generate_user_queries(
+                function_schemas=function_schemas,  
+                save=True,
+                verbose=True
+            )
         case _:
             print("Invalid flow. Please choose either 'function_calling' or 'function_generating'.")
     
