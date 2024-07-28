@@ -1,0 +1,2192 @@
+[
+  {
+    "name": "create_new_file",
+    "description": "Creates a new file with the provided content at the specified file path.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      },
+      {
+        "name": "content",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "file_path",
+      "content"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "edit_file_contents",
+    "description": "Edits the contents of an existing file.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      },
+      {
+        "name": "new_content",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "file_path",
+      "new_content"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "read_file_contents",
+    "description": "Reads the contents of an existing file.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "file_path"
+    ],
+    "returns": [
+      {
+        "name": "content",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "delete_file",
+    "description": "Deletes a file at the specified file path.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "file_path"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "copy_file",
+    "description": "Copies a file from the source file path to the destination file path.",
+    "parameters": [
+      {
+        "name": "source_file_path",
+        "type": "str"
+      },
+      {
+        "name": "destination_file_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "source_file_path",
+      "destination_file_path"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "move_file",
+    "description": "Moves a file from the source file path to the destination file path.",
+    "parameters": [
+      {
+        "name": "source_file_path",
+        "type": "str"
+      },
+      {
+        "name": "destination_file_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "source_file_path",
+      "destination_file_path"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "rename_file",
+    "description": "Renames a file at the specified file path with a new name.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      },
+      {
+        "name": "new_file_name",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "file_path",
+      "new_file_name"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "create_new_folder",
+    "description": "Creates a new folder at the specified folder path.",
+    "parameters": [
+      {
+        "name": "folder_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "folder_path"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "delete_folder",
+    "description": "Deletes a folder at the specified folder path.",
+    "parameters": [
+      {
+        "name": "folder_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "folder_path"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "copy_folder",
+    "description": "Copies a folder from the source folder path to the destination folder path.",
+    "parameters": [
+      {
+        "name": "source_folder_path",
+        "type": "str"
+      },
+      {
+        "name": "destination_folder_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "source_folder_path",
+      "destination_folder_path"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "move_folder",
+    "description": "Moves a folder from the source folder path to the destination folder path.",
+    "parameters": [
+      {
+        "name": "source_folder_path",
+        "type": "str"
+      },
+      {
+        "name": "destination_folder_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "source_folder_path",
+      "destination_folder_path"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "rename_folder",
+    "description": "Renames a folder at the specified folder path with a new name.",
+    "parameters": [
+      {
+        "name": "folder_path",
+        "type": "str"
+      },
+      {
+        "name": "new_folder_name",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "folder_path",
+      "new_folder_name"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "list_folder_contents",
+    "description": "Lists the contents of a folder at the specified folder path.",
+    "parameters": [
+      {
+        "name": "folder_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "folder_path"
+    ],
+    "returns": [
+      {
+        "name": "file_paths",
+        "type": "list[str]"
+      }
+    ]
+  },
+  {
+    "name": "move_file_to_folder",
+    "description": "Moves a file from the source file path to the destination folder path.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      },
+      {
+        "name": "destination_folder_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "file_path",
+      "destination_folder_path"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "copy_file_to_folder",
+    "description": "Copies a file from the source file path to the destination folder path.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      },
+      {
+        "name": "destination_folder_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "file_path",
+      "destination_folder_path"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "read_pdf_file",
+    "description": "Reads the contents of a PDF file.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "file_path"
+    ],
+    "returns": [
+      {
+        "name": "pdf_content",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "read_word_file",
+    "description": "Reads the contents of a Word file.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "file_path"
+    ],
+    "returns": [
+      {
+        "name": "word_content",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "read_excel_file",
+    "description": "Reads the contents of an Excel file.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "file_path"
+    ],
+    "returns": [
+      {
+        "name": "excel_content",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "extract_text_from_pdf",
+    "description": "Extracts the text from a PDF file.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "file_path"
+    ],
+    "returns": [
+      {
+        "name": "extracted_text",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "extract_text_from_word",
+    "description": "Extracts the text from a Word file.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "file_path"
+    ],
+    "returns": [
+      {
+        "name": "extracted_text",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "extract_text_from_excel",
+    "description": "Extracts the text from an Excel file.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "file_path"
+    ],
+    "returns": [
+      {
+        "name": "extracted_text",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "create_new_note",
+    "description": "Creates a new note with the provided content.",
+    "parameters": [
+      {
+        "name": "note_title",
+        "type": "str"
+      },
+      {
+        "name": "note_content",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "note_title",
+      "note_content"
+    ],
+    "returns": [
+      {
+        "name": "note_id",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "edit_note_contents",
+    "description": "Edits the contents of a note.",
+    "parameters": [
+      {
+        "name": "note_id",
+        "type": "int"
+      },
+      {
+        "name": "new_note_content",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "note_id",
+      "new_note_content"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "read_note_contents",
+    "description": "Reads the contents of a note.",
+    "parameters": [
+      {
+        "name": "note_id",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "note_id"
+    ],
+    "returns": [
+      {
+        "name": "note_content",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "delete_note",
+    "description": "Deletes a note.",
+    "parameters": [
+      {
+        "name": "note_id",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "note_id"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "get_note_by_title",
+    "description": "Gets a note by its title.",
+    "parameters": [
+      {
+        "name": "note_title",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "note_title"
+    ],
+    "returns": [
+      {
+        "name": "note_content",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "update_note_title",
+    "description": "Updates the title of a note.",
+    "parameters": [
+      {
+        "name": "note_id",
+        "type": "int"
+      },
+      {
+        "name": "new_note_title",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "note_id",
+      "new_note_title"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "generate_image_from_text_diffuser",
+    "description": "Generates an image from the given text using a diffuser model.",
+    "parameters": [
+      {
+        "name": "prompt_text",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "prompt_text"
+    ],
+    "returns": [
+      {
+        "name": "image_path",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "generate_image_from_text_diffuser_with_size",
+    "description": "Generates an image from the given text using a diffuser model and specifying the size.",
+    "parameters": [
+      {
+        "name": "prompt_text",
+        "type": "str"
+      },
+      {
+        "name": "image_width",
+        "type": "int"
+      },
+      {
+        "name": "image_height",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "prompt_text",
+      "image_width",
+      "image_height"
+    ],
+    "returns": [
+      {
+        "name": "image_path",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "perform_ocr_on_image",
+    "description": "Performs optical character recognition on an image to extract the text.",
+    "parameters": [
+      {
+        "name": "image_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "image_path"
+    ],
+    "returns": [
+      {
+        "name": "extracted_text",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "generate_audio_file_from_text",
+    "description": "Generates an audio file from the given text using a text-to-speech engine.",
+    "parameters": [
+      {
+        "name": "text",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "text"
+    ],
+    "returns": [
+      {
+        "name": "audio_file_path",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "generate_audio_file_from_text_with_voice",
+    "description": "Generates an audio file from the given text using a text-to-speech engine and a specific voice.",
+    "parameters": [
+      {
+        "name": "text",
+        "type": "str"
+      },
+      {
+        "name": "voice_name",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "text",
+      "voice_name"
+    ],
+    "returns": [
+      {
+        "name": "audio_file_path",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "transcribe_audio_file",
+    "description": "Transcribes an audio file to text using a speech-to-text engine.",
+    "parameters": [
+      {
+        "name": "audio_file_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "audio_file_path"
+    ],
+    "returns": [
+      {
+        "name": "transcribed_text",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "transcribe_audio_file_with_options",
+    "description": "Transcribes an audio file to text using a speech-to-text engine with additional options.",
+    "parameters": [
+      {
+        "name": "audio_file_path",
+        "type": "str"
+      },
+      {
+        "name": "language_code",
+        "type": "str"
+      },
+      {
+        "name": "encoding_format",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "audio_file_path",
+      "language_code",
+      "encoding_format"
+    ],
+    "returns": [
+      {
+        "name": "transcribed_text",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "search_over_query",
+    "description": "Searches the web for a given query.",
+    "parameters": [
+      {
+        "name": "query",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "query"
+    ],
+    "returns": [
+      {
+        "name": "search_results",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "search_for_images",
+    "description": "Searches for images based on a given query.",
+    "parameters": [
+      {
+        "name": "query",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "query"
+    ],
+    "returns": [
+      {
+        "name": "image_urls",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "search_for_news",
+    "description": "Searches for news articles based on a given query.",
+    "parameters": [
+      {
+        "name": "query",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "query"
+    ],
+    "returns": [
+      {
+        "name": "news_articles",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "advanced_search",
+    "description": "Performs an advanced search based on multiple parameters.",
+    "parameters": [
+      {
+        "name": "query",
+        "type": "str"
+      },
+      {
+        "name": "language",
+        "type": "str"
+      },
+      {
+        "name": "region",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "query",
+      "language",
+      "region"
+    ],
+    "returns": [
+      {
+        "name": "search_results",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "image_search_with_options",
+    "description": "Searches for images based on a given query and additional options.",
+    "parameters": [
+      {
+        "name": "query",
+        "type": "str"
+      },
+      {
+        "name": "size",
+        "type": "str"
+      },
+      {
+        "name": "color",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "query",
+      "size",
+      "color"
+    ],
+    "returns": [
+      {
+        "name": "image_urls",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "scrape_website_content",
+    "description": "Scrapes the content of a website.",
+    "parameters": [
+      {
+        "name": "url",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "url"
+    ],
+    "returns": [
+      {
+        "name": "scraped_content",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "scrape_website_content_with_selector",
+    "description": "Scrapes the content of a website using a specific selector.",
+    "parameters": [
+      {
+        "name": "url",
+        "type": "str"
+      },
+      {
+        "name": "selector",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "url",
+      "selector"
+    ],
+    "returns": [
+      {
+        "name": "scraped_content",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "take_screenshot_of_website",
+    "description": "Takes a screenshot of a website.",
+    "parameters": [
+      {
+        "name": "url",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "url"
+    ],
+    "returns": [
+      {
+        "name": "screenshot_path",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "take_screenshot_of_website_with_dimensions",
+    "description": "Takes a screenshot of a website with specific dimensions.",
+    "parameters": [
+      {
+        "name": "url",
+        "type": "str"
+      },
+      {
+        "name": "width",
+        "type": "int"
+      },
+      {
+        "name": "height",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "url",
+      "width",
+      "height"
+    ],
+    "returns": [
+      {
+        "name": "screenshot_path",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "download_file_from_website",
+    "description": "Downloads a file from a website.",
+    "parameters": [
+      {
+        "name": "url",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "url"
+    ],
+    "returns": [
+      {
+        "name": "file_path",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "download_file_from_website_with_authentication",
+    "description": "Downloads a file from a website that requires authentication.",
+    "parameters": [
+      {
+        "name": "url",
+        "type": "str"
+      },
+      {
+        "name": "username",
+        "type": "str"
+      },
+      {
+        "name": "password",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "url",
+      "username",
+      "password"
+    ],
+    "returns": [
+      {
+        "name": "file_path",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "interact_with_popup",
+    "description": "Interacts with a pop-up and performs the specified action.",
+    "parameters": [
+      {
+        "name": "popup_title",
+        "type": "str"
+      },
+      {
+        "name": "action",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "popup_title",
+      "action"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "handle_multiple_tabs_and_windows",
+    "description": "Handles multiple tabs and windows by switching between them.",
+    "parameters": [
+      {
+        "name": "tab_count",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "tab_count"
+    ],
+    "returns": [
+      {
+        "name": "current_tab_index",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "fill_out_form",
+    "description": "Fills out a form with the provided data.",
+    "parameters": [
+      {
+        "name": "form_data",
+        "type": "dict"
+      }
+    ],
+    "required": [
+      "form_data"
+    ],
+    "returns": [
+      {
+        "name": "form_filled",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "fill_out_form_with_verification",
+    "description": "Fills out a form with the provided data and verifies the submission.",
+    "parameters": [
+      {
+        "name": "form_data",
+        "type": "dict"
+      }
+    ],
+    "required": [
+      "form_data"
+    ],
+    "returns": [
+      {
+        "name": "form_filled",
+        "type": "bool"
+      },
+      {
+        "name": "submission_verified",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "close_all_tabs_and_windows",
+    "description": "Closes all tabs and windows.",
+    "parameters": [],
+    "required": [],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "send_email",
+    "description": "Sends a new email to the specified recipient.",
+    "parameters": [
+      {
+        "name": "recipient_email",
+        "type": "str"
+      },
+      {
+        "name": "subject",
+        "type": "str"
+      },
+      {
+        "name": "body",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "recipient_email",
+      "subject",
+      "body"
+    ],
+    "returns": [
+      {
+        "name": "email_sent",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "read_email_contents",
+    "description": "Reads the contents of an email with the specified title.",
+    "parameters": [
+      {
+        "name": "email_title",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "email_title"
+    ],
+    "returns": [
+      {
+        "name": "email_contents",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "retrieve_last_n_emails",
+    "description": "Retrieves the last n emails from the email inbox.",
+    "parameters": [
+      {
+        "name": "n",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "n"
+    ],
+    "returns": [
+      {
+        "name": "emails",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "send_text_message",
+    "description": "Sends a new text message to the specified recipient.",
+    "parameters": [
+      {
+        "name": "recipient_phone_number",
+        "type": "str"
+      },
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "recipient_phone_number",
+      "message"
+    ],
+    "returns": [
+      {
+        "name": "message_sent",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "retrieve_last_n_text_messages",
+    "description": "Retrieves the last n text messages from the message inbox.",
+    "parameters": [
+      {
+        "name": "n",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "n"
+    ],
+    "returns": [
+      {
+        "name": "messages",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "send_text_message_with_attachment",
+    "description": "Sends a new text message with an attachment to the specified recipient.",
+    "parameters": [
+      {
+        "name": "recipient_phone_number",
+        "type": "str"
+      },
+      {
+        "name": "message",
+        "type": "str"
+      },
+      {
+        "name": "attachment",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "recipient_phone_number",
+      "message",
+      "attachment"
+    ],
+    "returns": [
+      {
+        "name": "message_sent",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "create_event",
+    "description": "Creates a new event with the provided details.",
+    "parameters": [
+      {
+        "name": "title",
+        "type": "str"
+      },
+      {
+        "name": "start_time",
+        "type": "datetime"
+      },
+      {
+        "name": "end_time",
+        "type": "datetime"
+      },
+      {
+        "name": "description",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "title",
+      "start_time",
+      "end_time"
+    ],
+    "returns": [
+      {
+        "name": "event_id",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "edit_event",
+    "description": "Edits an existing event with the provided details.",
+    "parameters": [
+      {
+        "name": "event_id",
+        "type": "int"
+      },
+      {
+        "name": "title",
+        "type": "str"
+      },
+      {
+        "name": "start_time",
+        "type": "datetime"
+      },
+      {
+        "name": "end_time",
+        "type": "datetime"
+      },
+      {
+        "name": "description",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "event_id"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "delete_event",
+    "description": "Deletes an existing event.",
+    "parameters": [
+      {
+        "name": "event_id",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "event_id"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "get_events_of_day",
+    "description": "Retrieves the events of a specific day.",
+    "parameters": [
+      {
+        "name": "date",
+        "type": "date"
+      }
+    ],
+    "required": [
+      "date"
+    ],
+    "returns": [
+      {
+        "name": "events",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "get_events_of_week",
+    "description": "Retrieves the events of a specific week.",
+    "parameters": [
+      {
+        "name": "start_date",
+        "type": "date"
+      },
+      {
+        "name": "end_date",
+        "type": "date"
+      }
+    ],
+    "required": [
+      "start_date",
+      "end_date"
+    ],
+    "returns": [
+      {
+        "name": "events",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "get_events_of_month",
+    "description": "Retrieves the events of a specific month.",
+    "parameters": [
+      {
+        "name": "year",
+        "type": "int"
+      },
+      {
+        "name": "month",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "year",
+      "month"
+    ],
+    "returns": [
+      {
+        "name": "events",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "create_task",
+    "description": "Creates a new task with the provided details.",
+    "parameters": [
+      {
+        "name": "title",
+        "type": "str"
+      },
+      {
+        "name": "description",
+        "type": "str"
+      },
+      {
+        "name": "due_date",
+        "type": "date"
+      }
+    ],
+    "required": [
+      "title",
+      "description",
+      "due_date"
+    ],
+    "returns": [
+      {
+        "name": "task_id",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "edit_task",
+    "description": "Edits an existing task with the provided details.",
+    "parameters": [
+      {
+        "name": "task_id",
+        "type": "int"
+      },
+      {
+        "name": "title",
+        "type": "str"
+      },
+      {
+        "name": "description",
+        "type": "str"
+      },
+      {
+        "name": "due_date",
+        "type": "date"
+      }
+    ],
+    "required": [
+      "task_id"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "delete_task",
+    "description": "Deletes an existing task.",
+    "parameters": [
+      {
+        "name": "task_id",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "task_id"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "mark_task_as_completed",
+    "description": "Marks an existing task as completed.",
+    "parameters": [
+      {
+        "name": "task_id",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "task_id"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "get_tasks_of_day",
+    "description": "Retrieves the tasks of a specific day.",
+    "parameters": [
+      {
+        "name": "date",
+        "type": "date"
+      }
+    ],
+    "required": [
+      "date"
+    ],
+    "returns": [
+      {
+        "name": "tasks",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "get_tasks_of_week",
+    "description": "Retrieves the tasks of a specific week.",
+    "parameters": [
+      {
+        "name": "start_date",
+        "type": "date"
+      },
+      {
+        "name": "end_date",
+        "type": "date"
+      }
+    ],
+    "required": [
+      "start_date",
+      "end_date"
+    ],
+    "returns": [
+      {
+        "name": "tasks",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "get_tasks_of_month",
+    "description": "Retrieves the tasks of a specific month.",
+    "parameters": [
+      {
+        "name": "year",
+        "type": "int"
+      },
+      {
+        "name": "month",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "year",
+      "month"
+    ],
+    "returns": [
+      {
+        "name": "tasks",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "get_weather_forecast",
+    "description": "Retrieves the weather forecast of a location for a specific day",
+    "parameters": [
+      {
+        "name": "location",
+        "type": "str"
+      },
+      {
+        "name": "day",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "location",
+      "day"
+    ],
+    "returns": [
+      {
+        "name": "weather_forecast",
+        "type": "dict"
+      }
+    ]
+  },
+  {
+    "name": "get_current_weather",
+    "description": "Retrieves the current weather of a location",
+    "parameters": [
+      {
+        "name": "location",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "location"
+    ],
+    "returns": [
+      {
+        "name": "current_weather",
+        "type": "dict"
+      }
+    ]
+  },
+  {
+    "name": "get_hourly_weather_forecast",
+    "description": "Retrieves the hourly weather forecast of a location",
+    "parameters": [
+      {
+        "name": "location",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "location"
+    ],
+    "returns": [
+      {
+        "name": "weather_forecast",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "get_weekly_weather_forecast",
+    "description": "Retrieves the weekly weather forecast of a location",
+    "parameters": [
+      {
+        "name": "location",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "location"
+    ],
+    "returns": [
+      {
+        "name": "weather_forecast",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "order_food_from_app",
+    "description": "Places a food order through a mobile app",
+    "parameters": [
+      {
+        "name": "app_name",
+        "type": "str"
+      },
+      {
+        "name": "restaurant_name",
+        "type": "str"
+      },
+      {
+        "name": "order_details",
+        "type": "dict"
+      }
+    ],
+    "required": [
+      "app_name",
+      "restaurant_name",  
+      "order_details"
+    ],
+    "returns": [
+      {
+        "name": "order_id",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "order_food_from_website",
+    "description": "Places a food order through a website",
+    "parameters": [
+      {
+        "name": "website_url",
+        "type": "str"
+      },
+      {
+        "name": "restaurant_name",
+        "type": "str"
+      },
+      {
+        "name": "order_details",
+        "type": "dict"
+      }
+    ],
+    "required": [
+      "website_url",
+      "restaurant_name",
+      "order_details"
+    ],
+    "returns": [
+      {
+        "name": "order_id",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "check_food_order_status",
+    "description": "Checks the status of a food order on a specific platform",
+    "parameters": [
+      {
+        "name": "order_id",
+        "type": "str"
+      },
+      {
+        "name": "platform",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "order_id",
+      "platform"
+    ],
+    "returns": [
+      {
+        "name": "order_status",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "cancel_food_order",
+    "description": "Cancels a food order",
+    "parameters": [
+      {
+        "name": "order_id",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "order_id"
+    ],
+    "returns": [
+      {
+        "name": "cancelled",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "schedule_food_order",
+    "description": "Schedules a food order for a later time",
+    "parameters": [
+      {
+        "name": "restaurant_name",
+        "type": "str"
+      },
+      {
+        "name": "order_details",
+        "type": "dict"
+      },
+      {
+        "name": "schedule_time",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "restaurant_name",
+      "order_details",
+      "schedule_time"
+    ],
+    "returns": [
+      {
+        "name": "order_id",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "calculate_mean",
+    "description": "Calculates the mean of a list of numbers",
+    "parameters": [
+      {
+        "name": "numbers",
+        "type": "list"
+      }
+    ],
+    "required": [
+      "numbers"
+    ],
+    "returns": [
+      {
+        "name": "mean",
+        "type": "float"
+      }
+    ]
+  },
+  {
+    "name": "calculate_median",
+    "description": "Calculates the median of a list of numbers",
+    "parameters": [
+      {
+        "name": "numbers",
+        "type": "list"
+      }
+    ],
+    "required": [
+      "numbers"
+    ],
+    "returns": [
+      {
+        "name": "median",
+        "type": "float"
+      }
+    ]
+  },
+  {
+    "name": "search_regex_patterns",
+    "description": "Searches for regex patterns in a given text",
+    "parameters": [
+      {
+        "name": "text",
+        "type": "str"
+      },
+      {
+        "name": "pattern",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "text",
+      "pattern"
+    ],
+    "returns": [
+      {
+        "name": "matches",
+        "type": "list"
+      }
+    ]
+  },
+  {
+    "name": "convert_markdown_to_html",
+    "description": "Converts markdown text to HTML",
+    "parameters": [
+      {
+        "name": "markdown_text",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "markdown_text"
+    ],
+    "returns": [
+      {
+        "name": "html_text",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "convert_html_to_markdown",
+    "description": "Converts HTML text to markdown",
+    "parameters": [
+      {
+        "name": "html_text",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "html_text"
+    ],
+    "returns": [
+      {
+        "name": "markdown_text",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "replace_regex_pattern",
+    "description": "Replaces a regex pattern in a given text with a specified replacement string",
+    "parameters": [
+      {
+        "name": "text",
+        "type": "str"
+      },
+      {
+        "name": "pattern",
+        "type": "str"
+      },
+      {
+        "name": "replacement",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "text",
+      "pattern",
+      "replacement"
+    ],
+    "returns": [
+      {
+        "name": "new_text",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "increase_volume",
+    "description": "Increases the volume by a specified amount.",
+    "parameters": [
+      {
+        "name": "amount",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "amount"
+    ],
+    "returns": [
+      {
+        "name": "volume_level",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "decrease_volume",
+    "description": "Decreases the volume by a specified amount.",
+    "parameters": [
+      {
+        "name": "amount",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "amount"
+    ],
+    "returns": [
+      {
+        "name": "volume_level",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "mute_volume",
+    "description": "Mutes the volume.",
+    "parameters": [],
+    "required": [],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "unmute_volume",
+    "description": "Unmutes the volume.",
+    "parameters": [],
+    "required": [],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "set_volume_level",
+    "description": "Sets the volume to a specified level.",
+    "parameters": [
+      {
+        "name": "level",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "level"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "get_current_volume",
+    "description": "Gets the current volume level.",
+    "parameters": [],
+    "required": [],
+    "returns": [
+      {
+        "name": "volume_level",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "increase_brightness",
+    "description": "Increases the brightness by a specified amount.",
+    "parameters": [
+      {
+        "name": "amount",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "amount"
+    ],
+    "returns": [
+      {
+        "name": "brightness_level",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "increase_brightness_by_percentage",
+    "description": "Increases the brightness by a specified percentage.",
+    "parameters": [
+      {
+        "name": "percentage",
+        "type": "float"
+      }
+    ],
+    "required": [
+      "percentage"
+    ],
+    "returns": [
+      {
+        "name": "brightness_level",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "decrease_brightness",
+    "description": "Decreases the brightness by a specified amount.",
+    "parameters": [
+      {
+        "name": "amount",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "amount"
+    ],
+    "returns": [
+      {
+        "name": "brightness_level",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "decrease_brightness_by_percentage",
+    "description": "Decreases the brightness by a specified percentage.",
+    "parameters": [
+      {
+        "name": "percentage",
+        "type": "float"
+      }
+    ],
+    "required": [
+      "percentage"
+    ],
+    "returns": [
+      {
+        "name": "brightness_level",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "set_brightness_to_level",
+    "description": "Sets the brightness to a specified level.",
+    "parameters": [
+      {
+        "name": "level",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "level"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "set_brightness_to_percentage",
+    "description": "Sets the brightness to a specified percentage of the maximum brightness.",
+    "parameters": [
+      {
+        "name": "percentage",
+        "type": "float"
+      }
+    ],
+    "required": [
+      "percentage"
+    ],
+    "returns": [
+      {
+        "name": "success",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "get_current_brightness",
+    "description": "Gets the current brightness level.",
+    "parameters": [],
+    "required": [],
+    "returns": [
+      {
+        "name": "brightness_level",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "capture_photo",
+    "description": "Takes a photo using the device's camera and saves it to a specified file path.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "file_path"
+    ],
+    "returns": [
+      {
+        "name": "photo_taken",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "record_video",
+    "description": "Records a video using the device's camera and saves it to a specified file path.",
+    "parameters": [
+      {
+        "name": "file_path",
+        "type": "str"
+      },
+      {
+        "name": "duration",
+        "type": "int"
+      }
+    ],
+    "required": [
+      "file_path",
+      "duration"
+    ],
+    "returns": [
+      {
+        "name": "video_recorded",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "scan_qr_code",
+    "description": "Scans a QR code using the device's camera and returns the decoded data.",
+    "parameters": [],
+    "required": [],
+    "returns": [
+      {
+        "name": "qr_code_data",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "scan_qr_code_and_open_url",
+    "description": "Scans a QR code using the device's camera, decodes the data, and opens the URL if it contains one.",
+    "parameters": [],
+    "required": [],
+    "returns": [
+      {
+        "name": "url_opened",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "access_qr_code_data",
+    "description": "Accesses the data of a previously scanned QR code.",
+    "parameters": [
+      {
+        "name": "qr_code_id",
+        "type": "str"
+      }
+    ],
+    "required": [
+      "qr_code_id"
+    ],
+    "returns": [
+      {
+        "name": "qr_code_data",
+        "type": "str"
+      }
+    ]
+  }
+]

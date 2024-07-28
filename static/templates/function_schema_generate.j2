@@ -1,3 +1,4 @@
+{% raw %}
 Given the following curriculum details:
 Category: {{category}}
 Subcategory: {{subcategory}}
@@ -19,6 +20,13 @@ Adhere to the following guidelines:
     - Use snake_case for function names and variables.
     - Ensure that the function names are descriptive and relevant to the task.
     - When dealing with files, use file_path as the identifying parameter instead of file_name or file_id.
+    - For other domains, use appropriate identifiers that a user would naturally use:
+        - For emails or messages: use subject, sender, or recipient instead of message_id
+        - For documents: use title or document_name instead of document_id
+        - For calendar events: use event_name or event_datetime instead of event_id
+        - For contacts: use contact_name or email_address instead of contact_id
+        - For notes: use note_title or note_content instead of note_id
+        - For tasks or to-do items: use task_description or due_date instead of task_id
     - Include a diverse set of function schemas without repeating similar functions.
     - Do not include any additional information outside the JSON schemas in between the <schema> tags.
     - ALWAYS use double quotes for JSON keys and string values.
@@ -47,3 +55,4 @@ Following is an example response for the Category, Subcategory, and Task pair of
     ]
 }
 </schema>
+{% endraw %}

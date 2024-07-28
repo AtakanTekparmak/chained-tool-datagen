@@ -1,16 +1,11 @@
 category,subcategory,task
-File System, File, Create a new File
-File System, File, Edit the contents of a File
-File System, File, Read the contents of a File
-File System, File, Delete a File
-File System, File, Copy a File
-File System, File, Move a File
-File System, File, Rename a File
-File Syste, Folder, Create a new Folder
-File System, Folder, Delete a Folder
-File System, Folder, Copy a Folder
-File System, Folder, Move a Folder
-File System, Folder, Rename a Folder
-File System, Folder, List the contents of a Folder
-File System, Folder, Move a File to a Folder
-File System, Folder, Copy a File to a Folder
+Device Control, Volume, Increase the volume
+Device Control, Volume, Decrease the volume
+Device Control, Volume, Mute the volume
+Device Control, Volume, Unmute the volume
+Device Control, Brightness, Increase the brightness
+Device Control, Brightness, Decrease the brightness
+Device Control, Brightness, Set the brightness to a specific value
+Device Control, Camera, Take a photo
+Device Control, Camera, Record a video
+Device Control, Camera, Scan and access QR code(s)
