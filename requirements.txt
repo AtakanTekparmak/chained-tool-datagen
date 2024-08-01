@@ -10,5 +10,8 @@ pydantic
 # EasyFNC
 easy-fnc
 
+# Tiny FNC Engine
+tiny_fnc_engine
+
 # jinja2
 Jinja2
