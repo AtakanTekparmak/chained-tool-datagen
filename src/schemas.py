@@ -8,7 +8,6 @@ from easy_fnc.schemas import (
     FunctionParameter,
     FunctionMetadata,
 )
-from easy_fnc.schemas import ModelResponse as ChainedFNCResponse
 
 class Parameter(BaseModel):
     name: str
@@ -65,6 +64,21 @@ class CurriculumRow(BaseModel):
         return cls(category=row["category"], subcategory=row["subcategory"], task=row["task"])
     
 Curriculum = dict[str, list[CurriculumRow]]
+
+class DummyReturn(BaseModel):
+    """
+    Pydantic model for a dummy return
+    """
+    value: Union[str, int, float, bool, list, dict]
+    type: str
+
+class DummyFunction(BaseModel):
+    """
+    Pydantic model for a dummy function
+    """
+    name: str
+    returns: DummyReturn
+    implementation: str
 
 class FunctionsMetadata(BaseModel):
     """

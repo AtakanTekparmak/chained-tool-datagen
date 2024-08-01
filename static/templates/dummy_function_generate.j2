@@ -15,6 +15,7 @@ Adhere to the following guidelines:
 5. If multiple return values are specified, return a tuple with appropriate static values.
 6. Add a docstring that includes the description from the schema.
 7. Use realistic dummy values where appropriate (e.g., file paths, email addresses).
+8. Place a line of comments in the format `#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` between each dummy function.
 
 Format your response as follows:
 
@@ -39,7 +40,7 @@ def function_name(param1: type1, param2: type2, ...) -> return_type:
 
 </dummy_functions>
 
-Example dummy function based on the 'create_new_file' schema:
+Example response:
 
 <dummy_functions>
 
@@ -48,7 +49,15 @@ def create_new_file(file_path: str, content: str) -> bool:
     Creates a new file with the provided content at the specified file path.
     """
     return True
-    
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def read_file(file_path: str) -> str:
+    """
+    Reads the content of the file located at the specified file path.
+    """
+    return "File content"
+
 </dummy_functions>
 
 Please generate dummy functions for all the provided schemas, following this format and guidelines.
