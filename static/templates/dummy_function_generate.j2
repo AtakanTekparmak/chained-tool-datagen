@@ -1,0 +1,55 @@
+{% raw %}
+Given the following function schemas:
+
+<schemas>
+{{ schemas | indent(2) }}
+</schemas>
+
+Generate dummy Python functions for each of the provided schemas. Each dummy function should have a static return value that matches the expected return type(s) specified in the schema.
+
+Adhere to the following guidelines:
+1. Use the exact function name provided in the schema.
+2. Include all parameters specified in the schema, respecting their names and types.
+3. Add type hints for parameters and return values.
+4. For the function body, simply return a static value that matches the expected return type(s).
+5. If multiple return values are specified, return a tuple with appropriate static values.
+6. Add a docstring that includes the description from the schema.
+7. Use realistic dummy values where appropriate (e.g., file paths, email addresses).
+
+Format your response as follows:
+
+<dummy_functions>
+
+def function_name(param1: type1, param2: type2, ...) -> return_type:
+    """
+    Function description from the schema.
+
+    Parameters:
+    - param1: Description of param1
+    - param2: Description of param2
+    ...
+
+    Returns:
+    - return_value: Description of return value
+    """
+    # Dummy implementation
+    return static_value
+
+# Add more dummy functions here, separated by blank lines
+
+</dummy_functions>
+
+Example dummy function based on the 'create_new_file' schema:
+
+<dummy_functions>
+
+def create_new_file(file_path: str, content: str) -> bool:
+    """
+    Creates a new file with the provided content at the specified file path.
+    """
+    return True
+    
+</dummy_functions>
+
+Please generate dummy functions for all the provided schemas, following this format and guidelines.
+{% endraw %}
