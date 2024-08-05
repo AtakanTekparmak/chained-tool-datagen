@@ -7,8 +7,7 @@ from src.models.config import ModelConfig
 from src.templates import load_fn_call_template
 from src.utils import load_function_schemas
 
-from src.components.function_schema_generator import generate_function_schemas
-from src.components.user_query_generator import generate_user_queries
+from src.components import generate_function_schemas, generate_user_queries, generate_dummy_functions
 
 from easy_fnc.function_caller import FunctionCallingEngine, create_functions_metadata
 
@@ -76,6 +75,13 @@ def main():
             function_schemas = load_function_schemas()
             user_queries = generate_user_queries(
                 function_schemas=function_schemas,  
+                save=True,
+                verbose=True
+            )
+        case "dummy_function_generation" | "generate_dummy_functions":
+            function_schemas = load_function_schemas()
+            dummy_functions = generate_dummy_functions(
+                function_schemas=function_schemas,
                 save=True,
                 verbose=True
             )

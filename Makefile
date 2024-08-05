@@ -16,10 +16,11 @@ help:
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
-	@echo "  1. data_genie_setup  Clone the data-genie-agents repository and install its dependencies (should be run first)"
-	@echo "  2. install           Install dependencies and set up the environment (should be run second)"
-	@echo "  3. run               Run the main.py script (should be run third)"
-	@echo "  4. clean             Remove the virtual environment and its contents"
+	@echo "  1. install           	    Install dependencies and set up the environment"
+	@echo "  2. run_schema_gen			Run the function schema generating flow (First step in the pipeline)"
+	@echo "  3. run_user_query_gen		Run the user query generating flow (Second step in the pipeline)"
+	@echo "  4. run_dummy_function_gen  Run the dummy function generating flow (Third step in the pipeline)"
+	@echo "  5. clean             		Remove the virtual environment and its contents"
 
 # Copy the .env.example file to .env only if it doesn't exist
 copy_env:
@@ -45,6 +46,11 @@ run_schema_gen:
 run_user_query_gen:
 	. $(VENV_NAME)/bin/activate && \
 	$(PYTHON) main.py --flow user_query_generation
+
+# Run the dummy function generating flow
+run_dummy_function_gen:
+	. $(VENV_NAME)/bin/activate && \
+	$(PYTHON) main.py --flow dummy_function_generation
 
 # Run the function calling flow
 run_function_call:

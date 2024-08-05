@@ -9,6 +9,8 @@ from easy_fnc.schemas import (
     FunctionMetadata,
 )
 
+from easy_fnc.schemas import ModelResponse as ChainedFNCResponse
+
 class Parameter(BaseModel):
     name: str
     type: str

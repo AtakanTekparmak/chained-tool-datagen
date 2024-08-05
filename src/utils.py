@@ -3,7 +3,7 @@ import csv
 import json
 import os
 
-from src.schemas import CurriculumRow, Curriculum, FunctionSchema, Parameter, Return
+from src.schemas import CurriculumRow, Curriculum, FunctionSchema, Parameter, Return, DummyFunction
 from src.settings import STATIC_DIR, CURRICULUM_PATH, FN_SCHEMAS_PATH
 
 def load_toml(file_path: str) -> dict[str, any]:
@@ -86,3 +86,18 @@ def load_function_schemas(file_path: str = FN_SCHEMAS_PATH) -> list[FunctionSche
     except FileNotFoundError:
         print(f"Function schemas file not found: {file_path}")
         return []
+    
+def save_dummy_functions(file_path: str, dummy_functions: list[DummyFunction]):
+    """Save dummy functions to a Python file"""
+    # Create the directory if it doesn't exist
+    if not os.path.exists(os.path.dirname(file_path)):
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+    try:
+        with open(file_path, "w") as f:
+            for dummy_function in dummy_functions:
+                f.write(dummy_function.implementation)
+                f.write("\n\n")
+                f.write("\n\n")
+    except FileNotFoundError:
+        print(f"File \"{file_path}\" does not exist")
