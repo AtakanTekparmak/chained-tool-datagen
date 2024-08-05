@@ -32,11 +32,6 @@ install: copy_env
 	. $(VENV_NAME)/bin/activate && \
 	$(PIP) install -r requirements.txt 
 
-# Run the main.py script
-run: 
-	. $(VENV_NAME)/bin/activate && \
-	$(PYTHON) main.py
-
 # Run the function schema generating flow 
 run_schema_gen:
 	. $(VENV_NAME)/bin/activate && \
@@ -56,6 +51,13 @@ run_dummy_function_gen:
 run_function_call:
 	. $(VENV_NAME)/bin/activate && \
 	$(PYTHON) main.py --flow function_calling
+
+# Run all the flows
+run_all:
+	. $(VENV_NAME)/bin/activate && \
+	$(PYTHON) main.py --flow function_generation && \
+	$(PYTHON) main.py --flow user_query_generation && \
+	$(PYTHON) main.py --flow dummy_function_generation 
 
 # Clean the virtual environment
 clean:

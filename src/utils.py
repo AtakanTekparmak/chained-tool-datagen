@@ -98,6 +98,5 @@ def save_dummy_functions(file_path: str, dummy_functions: list[DummyFunction]):
             for dummy_function in dummy_functions:
                 f.write(dummy_function.implementation)
                 f.write("\n\n")
-                f.write("\n\n")
     except FileNotFoundError:
         print(f"File \"{file_path}\" does not exist")
