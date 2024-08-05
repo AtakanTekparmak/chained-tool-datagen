@@ -33,21 +33,38 @@ graph TD
 
 ## Installation and Setup
 
-1. Pull [data-genie-agents](https://github.com/interstellarninja/data-genie-agents):
-```bash
-make data_genie_setup
-```
-
-2. Create a virtualenv and install the requirements:        
+1. Install the required packages using the following command:
 ```bash
 make install
 ```
 
-3. Add your `GROQ_API_KEY` to the `.env` file.
+And you should be good to go.
 
 ## Usage
 
-To run the pipeline:
+### 1. Generating Function Schemas
+
+To generate function schemas, run the following command:
 ```bash
-make run
+make run_schema_gen
 ```
+
+which will save the results to `results/function_schemas.json`.
+
+### 2. Generating User Queries
+
+To generate user queries, run the following command:
+```bash
+make run_user_query_gen
+```
+
+which will save the results to `results/user_queries.json`.
+
+### 3. Generating Dummy Functions
+
+To generate dummy functions, run the following command:
+```bash
+make run_dummy_function_gen
+```
+
+which will save the results to `results/dummy_functions.py`.
