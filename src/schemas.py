@@ -3,13 +3,14 @@ from pydantic import BaseModel
 from typing import Union, Optional, List
 
 from easy_fnc.schemas import (
-    FunctionCall,
     FunctionReturn,
     FunctionParameter,
     FunctionMetadata,
 )
 
 from easy_fnc.schemas import ModelResponse as ChainedFNCResponse
+
+from tiny_fnc_engine import FunctionCall
 
 class Parameter(BaseModel):
     name: str
@@ -82,6 +83,13 @@ class DummyFunction(BaseModel):
     returns: DummyReturn
     implementation: str
 
+class FunctionCallingResponse(BaseModel):
+    """
+    Pydantic model for function calling response
+    """
+    thoughts: str
+    function_calls: list[FunctionCall]
+
 class FunctionsMetadata(BaseModel):
     """
     Pydantic model for functions metadata
@@ -112,7 +120,7 @@ class AssistantMessage(BaseModel):
     Pydantic model for assistant message
     """
     role: str = "assistant"
-    content: Optional[str]
+    content: Optional[Union[str, FunctionCallingResponse]]
 
 class Conversation(BaseModel):
     """
